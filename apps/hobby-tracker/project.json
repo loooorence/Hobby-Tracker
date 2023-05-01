@@ -1,0 +1,64 @@
+{
+  "name": "hobby-tracker",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/hobby-tracker/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/hobby-tracker",
+        "main": "apps/hobby-tracker/src/main.ts",
+        "tsConfig": "apps/hobby-tracker/tsconfig.app.json",
+        "assets": ["apps/hobby-tracker/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/hobby-tracker/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "hobby-tracker:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "hobby-tracker:build:development"
+        },
+        "production": {
+          "buildTarget": "hobby-tracker:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/hobby-tracker/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/hobby-tracker/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
