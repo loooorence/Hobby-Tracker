@@ -5,8 +5,8 @@
   "scripts": {
     "start": "nx run-many --target=serve --projects=web,hobby-tracker",
     "db:dockers:dev": "docker-compose -f tools/hobby-tracker-environment/dev.docker-compose.yml up -d --no-recreate --remove-orphans",
-    "db:migrate:dev": "npx env-cmd -f .local.env npx prisma migrate dev",
-    "db:studio": "npx env-cmd -f .local.env npx prisma studio",
+    "db:migrate:dev": "npx env-cmd -f .env npx prisma migrate dev",
+    "db:studio": "npx env-cmd -f .env npx prisma studio",
     "gen:gql-client": "graphql-codegen --config tools/graphql-codegen/codegen.yml",
     "codegen": "graphql-codegen --config codegen.ts"
   },
@@ -15,6 +15,7 @@
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",
     "@fastify/helmet": "^10.1.0",
+    "@iconify/react": "^4.1.0",
     "@mercuriusjs/gateway": "^1.2.0",
     "@mui/material": "^5.12.3",
     "@nestjs/common": "^9.0.0",
