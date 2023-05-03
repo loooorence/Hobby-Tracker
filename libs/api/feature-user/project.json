@@ -1,0 +1,40 @@
+{
+  "name": "hobby-tracker-feature-user",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/hobby-tracker/feature-user/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/hobby-tracker/feature-user",
+        "main": "libs/hobby-tracker/feature-user/src/index.ts",
+        "tsConfig": "libs/hobby-tracker/feature-user/tsconfig.lib.json",
+        "assets": ["libs/hobby-tracker/feature-user/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/hobby-tracker/feature-user/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/hobby-tracker/feature-user/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
