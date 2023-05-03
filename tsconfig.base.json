@@ -19,6 +19,9 @@
         "libs/api/generated-db-types/src/index.ts"
       ],
       "@hobby-tracker/data-access-api": ["libs/data-access-api/src/index.ts"],
+      "@hobby-tracker/data-access-graphql": [
+        "libs/data-access-graphql/src/index.ts"
+      ],
       "@hobby-tracker/hobby-tracker/feature-user": [
         "libs/hobby-tracker/feature-user/src/index.ts"
       ]

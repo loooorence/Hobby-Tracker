@@ -1,0 +1,26 @@
+{
+  "name": "data-access-graphql",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/data-access-graphql/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/data-access-graphql",
+        "main": "libs/data-access-graphql/src/index.ts",
+        "tsConfig": "libs/data-access-graphql/tsconfig.lib.json",
+        "assets": ["libs/data-access-graphql/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/data-access-graphql/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
