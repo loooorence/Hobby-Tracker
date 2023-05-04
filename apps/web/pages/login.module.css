@@ -1,0 +1,393 @@
+.Auth-panel-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gray-50);
+    inline-size: 25vw;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .Auth-panel-toggle {
+    display: block;
+    margin: auto;
+    margin-top: 6rem;
+    border-radius: 9999px;
+    border: 2px solid var(--gray-50);
+    color: var(--gray-100);
+    background: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    height: 2.7rem;
+    max-width: 400px;
+    padding-left: 1.3em;
+    padding-right: 1.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .Auth-panel-toggle:hover {
+    background-color: var(--blue-400);
+  }
+  
+  @media (max-width: 768px) {
+    .Auth-panel-title {
+      font-size: 2.5rem;
+      inline-size: 75vw;
+    }
+  
+    .Auth-panel-toggle {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  .Auth-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gray-900);
+  }
+  
+  .Auth-input {
+    background-color: var(--gray-200);
+    border-radius: 9999px;
+    margin-top: 1.5rem;
+    min-width: 350px;
+    height: 2.7rem;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding-inline-start: 0.4em;
+  }
+  
+  .Auth-input svg {
+    line-height: 1;
+    font-size: 1.1rem;
+    display: block;
+    margin: auto;
+    color: var(--gray-500);
+  }
+  
+  .Auth-input input::placeholder {
+    color: var(--gray-500);
+    font-weight: 400;
+  }
+  
+  .Auth-input input {
+    background: none;
+    border: none;
+    outline: none;
+    line-height: 1;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--gray-800);
+  }
+  
+  .Auth-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .Auth-submit {
+    border-radius: 9999px;
+    border: none;
+    color: var(--gray-100);
+    background-color: var(--blue-500);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    height: 2.7rem;
+    max-width: 400px;
+    padding-left: 1.3em;
+    padding-right: 1.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .Auth-submit:hover {
+    background-color: var(--blue-600);
+  }
+  
+  .Auth-social-media {
+    margin-top: 2rem;
+  }
+  
+  .Auth-social-media button svg {
+    line-height: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: auto;
+  }
+  
+  .Auth-social-media button {
+    width: 2.7rem;
+    height: 2.7rem;
+    margin: 0 0.5rem;
+    border-radius: 9999px;
+    padding: 0.4em;
+    border: 1px solid var(--gray-700);
+    background-color: var(--gray-100);
+    color: var(--gray-400);
+    cursor: pointer;
+  }
+  
+  .Auth-social-media button:hover {
+    border: 1px solid var(--blue-500);
+    color: var(--blue-500);
+  }
+  
+  .Auth-note {
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray-400);
+  }
+  
+  .Auth-forgot {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: var(--gray-600);
+  }
+  
+  .Auth-forgot:hover {
+    color: var(--blue-500);
+  }
+  
+  .Auth-container {
+    position: relative;
+    background: none;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  .Auth-container::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 66% 0 0);
+    background: var(--blue-300);
+    background: linear-gradient(45deg, var(--blue-400) 0%, var(--blue-200) 100%);
+    /* transition: clip-path 2s ease-in-out; */
+  }
+  
+  .Auth-container.signup::before {
+    clip-path: inset(0 0 0 66%);
+  }
+  
+  .Auth-panel-container {
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 16%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .signup .Auth-panel-container {
+    left: 84%;
+  }
+  
+  .Auth-form-container {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 66%;
+    transform: translate(-50%, -50%);
+    transition: left calc(2*var(--auth-tween-time)) ease-in-out;
+  }
+  
+  .signup .Auth-form-container {
+    left: 33%;
+  }
+  
+  /* NOTE: cant use 0%,50%,100% since I want different easing fn from 0->50 and 50->100
+  and not sure if that can be done with 1 keyframe */
+  @keyframes login2signup1 {
+    from {
+      clip-path: inset(0 0 0 66%);
+    }
+    to {
+      clip-path: inset(0 25% 0 25%);
+    }
+  }
+  @keyframes login2signup2 {
+    from {
+      clip-path: inset(0 25% 0 25%);
+    }
+    to {
+      clip-path: inset(0 66% 0 0);
+    }
+  }
+  
+  @keyframes signup2login1 {
+    from {
+      clip-path: inset(0 66% 0 0);
+    }
+    to {
+      clip-path: inset(0 25% 0 25%);
+    }
+  }
+  @keyframes signup2login2 {
+    from {
+      clip-path: inset(0 25% 0 25%);
+    }
+    to {
+      clip-path: inset(0 0 0 66%);
+    }
+  }
+  
+  .login2signup::before {
+    animation: login2signup1 var(--auth-tween-time) ease-in 0s 1 normal forwards,
+      login2signup2 var(--auth-tween-time) ease-out var(--auth-tween-time) 1 normal forwards;
+  }
+  .signup2login::before {
+    animation: signup2login1 var(--auth-tween-time) ease-in 0s 1 normal forwards,
+      signup2login2 var(--auth-tween-time) ease-out var(--auth-tween-time) 1 normal forwards;
+  }
+  
+  @keyframes signup-out1 {
+    from {
+      left: 16%;
+    }
+    to {
+      left: -10%;
+    }
+  }
+  @keyframes signup-out2 {
+    from {
+      left: 110%;
+    }
+    to {
+      left: 84%;
+    }
+  }
+  
+  @keyframes login-out1 {
+    from {
+      left: 84%;
+    }
+    to {
+      left: 110%;
+    }
+  }
+  @keyframes login-out2 {
+    from {
+      left: -10%;
+    }
+    to {
+      left: 16%;
+    }
+  }
+  
+  .signup-out {
+    animation: signup-out1 var(--auth-tween-time) ease-out 0s 1 normal forwards,
+      signup-out2 var(--auth-tween-time) ease-out var(--auth-tween-time) 1 normal forwards;
+  }
+  .login-out {
+    animation: login-out1 var(--auth-tween-time) ease-out 0s 1 normal forwards,
+      login-out2 var(--auth-tween-time) ease-out var(--auth-tween-time) 1 normal forwards;
+  }
+  
+  @media (max-width: 768px) {
+    .Auth-container::before {
+      clip-path: inset(66% 0 0 0);
+    }
+  
+    .Auth-container.signup::before {
+      clip-path: inset(0 0 66% 0);
+    }
+  
+    .Auth-panel-container {
+      top: 83%;
+      left: 50%;
+    }
+  
+    .signup .Auth-panel-container {
+      top: 17%;
+      left: 50%;
+    }
+  
+    .Auth-form-container {
+      top: 33%;
+      left: 50%;
+      transition: top calc(2*var(--auth-tween-time)) ease-in-out;
+    }
+  
+    .signup .Auth-form-container {
+      top: 66%;
+      left: 50%;
+    }
+  
+    @keyframes login2signup1 {
+      from {
+        clip-path: inset(0 0 66% 0);
+      }
+      to {
+        clip-path: inset(15% 0 15% 0);
+      }
+    }
+    @keyframes login2signup2 {
+      from {
+        clip-path: inset(15% 0 15% 0);
+      }
+      to {
+        clip-path: inset(66% 0 0 0);
+      }
+    }
+  
+    @keyframes signup2login1 {
+      from {
+        clip-path: inset(66% 0 0 0);
+      }
+      to {
+        clip-path: inset(15% 0 15% 0);
+      }
+    }
+    @keyframes signup2login2 {
+      from {
+        clip-path: inset(15% 0 15% 0);
+      }
+      to {
+        clip-path: inset(0 0 66% 0);
+      }
+    }
+  
+    @keyframes signup-out1 {
+      from {
+        top: 83%;
+      }
+      to {
+        top: 110%;
+      }
+    }
+    @keyframes signup-out2 {
+      from {
+        top: -10%;
+      }
+      to {
+        top: 17%;
+      }
+    }
+  
+    @keyframes login-out1 {
+      from {
+        top: 17%;
+      }
+      to {
+        top: -10%;
+      }
+    }
+    @keyframes login-out2 {
+      from {
+        top: 110%;
+      }
+      to {
+        top: 83%;
+      }
+    }
+  }
+  

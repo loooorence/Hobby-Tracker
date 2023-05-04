@@ -1,3 +1,33 @@
+:root {
+  /* https://tailcolor.com/palettes/2a7ae5 */
+  --blue-50: #eaf2fc;
+  --blue-100: #d4e4fa;
+  --blue-200: #aacaf5;
+  --blue-300: #7fafef;
+  --blue-400: #5595ea;
+  --blue-500: #2a7ae5;
+  --blue-600: #2262b7;
+  --blue-700: #194989;
+  --blue-800: #11315c;
+  --blue-900: #08182e;
+
+  /* copy tailwind colors */
+  /* https://tailwindcss.com/docs/customizing-colors */
+  --gray-50: #f9fafb;
+  --gray-100: #f4f4f5;
+  --gray-200: #e4e4e7;
+  --gray-300: #d4d4d8;
+  --gray-400: #a1a1aa;
+  --gray-500: #71717a;
+  --gray-600: #52525b;
+  --gray-700: #27272a;
+  --gray-800: #27272a;
+  --gray-900: #18181b;
+  --gray-950: #09090b;
+
+  --auth-tween-time: 200ms;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -21,6 +51,8 @@ pre {
 *,
 ::before,
 ::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   border-width: 0;
   border-style: solid;
