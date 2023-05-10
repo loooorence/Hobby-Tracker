@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css?family=Snowburst+One:400|Sora:400");
+
+.flex_col {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    min-height: 350px;
+    width: 150px;
+}
+.hobby_tracker {
+    -webkit-text-stroke: 0.8px rgb(40, 78, 64);
+    color: rgb(40, 78, 64);
+    font-family: 'Snowburst One';
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    height: 60px;
+    width: 80px;
+    margin-top: 1px;
+    margin-left: 80px;
+}
+.logo_span{
+    padding: 60px;
+}
+.logo {
+    margin-right: 10px;
+    margin-bottom: -50px;
+}
+
+.flex_row {
+    align-items: flex-end;
+    display: flex;
+    gap: 20px;
+    height: 220px;
+    min-width: 130px;
+}
+
+.flex_col2 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    min-height: 206px;
+    width: 100px;
+}
+.home_button {
+    background-color: transparent; 
+    border: none;
+    border-radius: 20px;
+    width: 200px;
+    height: 40px;
+    padding: 0em 0em;
+    transition-duration: 0.4s;
+    font-size: 15px;
+    line-height: 40px;
+}
+.home_button:hover {
+    background-color: #eeebeb;
+}
+.post_button {
+    background-color: transparent; 
+    margin-top: 30px;
+    border: none;
+    border-radius: 20px;
+    width: 200px;
+    height: 40px;
+    padding: 0em 0em;
+    transition-duration: 0.4s;
+    font-size: 15px;
+}
+.post_button:hover {
+    background-color: #eeebeb;
+}
+.me_button {
+    background-color: transparent; 
+    margin-top: 30px;
+    border: none;
+    border-radius: 20px;
+    width: 200px;
+    height: 40px;
+    padding: 0em 0em;
+    transition-duration: 0.4s;
+    font-size: 15px;
+}
+.me_button:hover {
+    background-color: #eeebeb;
+}
+
+.home_icon {
+    margin-left: -90px;
+    margin-bottom: -6px;
+}
+.home_span {
+    padding: 10px;
+}
+
+.post_icon {
+    margin-left: -100px;
+    margin-bottom: -6px;
+}
+.post_span {
+    padding: 10px;
+}
+
+.me_icon {
+    margin-left: -110px;
+    margin-bottom: -6px;
+}
+.me_span {
+    padding: 10px;
+}
+
+
