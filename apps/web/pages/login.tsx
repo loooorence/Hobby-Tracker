@@ -9,7 +9,11 @@ export function Login() {
 
   const [tweenTime, setTweenTime] = useState(200);
   useEffect(() => {
-    setTweenTime(window.parseInt(getComputedStyle(document.body).getPropertyValue('--auth-tween-time')));
+    setTweenTime(
+      window.parseInt(
+        getComputedStyle(document.body).getPropertyValue('--auth-tween-time')
+      )
+    );
   });
 
   const toggle = () => {
@@ -43,18 +47,24 @@ export function Login() {
   };
 
   return (
-    <div ref={authContainer} className={styles["Auth-container"]}>
-      <div ref={authPanelContainer} className={styles["Auth-panel-container"]}>
+    <div ref={authContainer} className={styles['Auth-container']}>
+      <div ref={authPanelContainer} className={styles['Auth-panel-container']}>
         <AuthPanel isLogin={isLogin} toggle={toggle}></AuthPanel>
       </div>
-      <div className={styles["Auth-form-container"]}>
+      <div className={styles['Auth-form-container']}>
         <AuthForm isLogin={isLogin}></AuthForm>
       </div>
     </div>
   );
 }
 
-function AuthPanel({ isLogin, toggle }: { isLogin: boolean, toggle: () => void }) {
+function AuthPanel({
+  isLogin,
+  toggle,
+}: {
+  isLogin: boolean;
+  toggle: () => void;
+}) {
   return (
     <>
       <h3 className={styles['Auth-panel-title']}>
@@ -69,9 +79,9 @@ function AuthPanel({ isLogin, toggle }: { isLogin: boolean, toggle: () => void }
 
 function AuthForm({ isLogin }: { isLogin: boolean }) {
   return (
-    <form action="#" className={styles["Auth-form"]}>
-      <h2 className={styles["Auth-title"]}>{isLogin ? 'Login' : 'Sign Up'}</h2>
-      <div className={styles["Auth-social-media"]}>
+    <form action="#" className={styles['Auth-form']}>
+      <h2 className={styles['Auth-title']}>{isLogin ? 'Login' : 'Sign Up'}</h2>
+      <div className={styles['Auth-social-media']}>
         <button aria-label="login with facebook">
           <Icon icon="basil:facebook-solid" />
         </button>
@@ -82,30 +92,32 @@ function AuthForm({ isLogin }: { isLogin: boolean }) {
           <Icon icon="mdi:twitter" />
         </button>
       </div>
-      <div className={styles["Auth-note"]}>
+      <div className={styles['Auth-note']}>
         {isLogin ? 'or use your email:' : 'or use your email for registration:'}
       </div>
       {!isLogin && (
-        <div className={styles["Auth-input"]}>
+        <div className={styles['Auth-input']}>
           <Icon icon="mdi:user" />
           <input type="text" placeholder="Username" />
         </div>
       )}
-      <div className={styles["Auth-input"]}>
+      <div className={styles['Auth-input']}>
         <Icon icon="mdi:envelope" />
         <input type="email" placeholder="Email" />
       </div>
-      <div className={styles["Auth-input"]}>
+      <div className={styles['Auth-input']}>
         <Icon icon="material-symbols:lock" />
         <input type="password" placeholder="Password" />
       </div>
       {isLogin && (
-        <a href='#' className={styles['Auth-forgot']}>Forgot your password?</a>
+        <a href="#" className={styles['Auth-forgot']}>
+          Forgot your password?
+        </a>
       )}
       <input
         type="submit"
         value={isLogin ? 'Login' : 'Sign Up'}
-        className={styles["Auth-submit"]}
+        className={styles['Auth-submit']}
       ></input>
     </form>
   );
