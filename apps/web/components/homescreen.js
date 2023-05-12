@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styles from './homescreen.module.css';
 import Modal from 'react-modal';
+import Image from 'next/image';
 
-import image1 from './images/diversity.jpg';
-import image2 from './images/HappyFamily.jpg';
-import image3 from './images/gumball.jpg';
+import image1 from '../public/images/diversity.jpg';
+import image2 from '../public/images/HappyFamily.jpg';
+import image3 from '../public/images/gumball.jpg';
 
 const images = [
   { src: image1, title: 'diversity' },
@@ -29,12 +30,21 @@ function HomeScreen() {
   return (
     <div className={styles.gridContainer}>
       {images.map((img, index) => (
-        <div key={index} className={styles.gridItem}>
-          <img src={img.src} alt={img.title} onClick={() => openImage(img)} />
+        <div
+          key={index}
+          className={styles.gridItem}
+          onClick={() => openImage(img)}
+        >
+          <Image src={img.src} width={500} height={500} alt={img.title} />
         </div>
       ))}
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-        <img src={selectedImg?.src} alt={selectedImg?.title} />
+        <Image
+          src={selectedImg?.src}
+          width={500}
+          height={500}
+          alt={selectedImg?.title}
+        />
         <button onClick={closeModal}>X</button>
       </Modal>
     </div>
