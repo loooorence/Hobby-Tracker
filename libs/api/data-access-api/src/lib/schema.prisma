@@ -40,4 +40,13 @@ model User {
   /// @Validator.MinLength(8)
   /// @HideField()
   password String
+  posts    Post[]
+}
+
+model Post {
+  id          String @id @default(uuid())
+  title       String
+  description String
+  author      User   @relation(fields: [authorId], references: [id])
+  authorId    String
 }

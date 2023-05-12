@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@hobby-tracker/api/feature-post": ["libs/api/feature-post/src/index.ts"],
       "@hobby-tracker/api/generated-db-types": [
         "libs/api/generated-db-types/src/index.ts"
       ],
