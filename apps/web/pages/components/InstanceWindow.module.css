@@ -1,0 +1,44 @@
+.instance {
+    padding: 1rem;
+    background-color: rgb(219, 214, 214);
+    margin: 5rem auto;
+    height: 30rem;
+    width: 35rem;
+    
+    max-width: 95%;
+    border-radius: 9px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  }
+  
+  .instance__pai {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.583);
+    padding-bottom: 3px;
+    text-align-last: center;
+  }
+
+  .instance__button {
+    font-size: 17px;
+    text-align-last: center;
+    position: relative;
+    bottom: -194px;
+    left: 34%;
+    border-radius: 9px;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px transparent;
+    background-color: rgb(182, 180, 180);
+    padding: 10px 20px;
+    box-shadow: 0 3px 15px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+  }
+  
+  .instance__picture {
+    padding: 1rem;
+    background-color: rgb(122, 113, 113);
+    margin: 5rem auto;
+    height: 20rem;
+    width: 25rem;
+  }
+  
