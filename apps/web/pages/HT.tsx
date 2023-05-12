@@ -1,4 +1,4 @@
-import InstanceWindow from "./components/InstanceWindow";
+import InstanceWindow from "../components/InstanceWindow";
 
 
 function HT() {

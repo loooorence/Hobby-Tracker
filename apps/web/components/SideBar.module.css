@@ -1,106 +1,64 @@
 @import url("https://fonts.googleapis.com/css?family=Snowburst+One:400|Sora:400");
 
 .flex_col {
+    column-gap: 1rem;
+    position: fixed;
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 50px;
     min-height: 350px;
     width: 150px;
+    margin-left: 2rem;
 }
 .hobby_tracker {
     -webkit-text-stroke: 0.8px rgb(40, 78, 64);
     color: rgb(40, 78, 64);
     font-family: 'Snowburst One';
-    font-size: 20px;
+    font-size: 2rem;
     letter-spacing: 0;
     line-height: normal;
-    height: 60px;
-    width: 80px;
-    margin-top: 1px;
-    margin-left: 80px;
+    margin-left: 5rem;
+    margin-bottom: -5rem;
 }
 .logo_span{
-    padding: 60px;
+    padding: 20px;
 }
 .logo {
-    margin-right: 10px;
-    margin-bottom: -50px;
+    margin-left: 1rem;
+    margin-bottom: -5rem;
 }
 
 .flex_row {
-    align-items: flex-end;
-    display: flex;
-    gap: 20px;
-    height: 220px;
-    min-width: 130px;
-}
-
-.flex_col2 {
+    margin-top: 5rem;
     align-items: flex-start;
+    row-gap: 3rem;
     display: flex;
     flex-direction: column;
-    min-height: 206px;
-    width: 100px;
 }
-.home_button {
-    display: grid;
-    grid-template-columns: 15% 85%;
+
+
+.button {
+    padding: 1em;
+    display: flex;
+    align-items: center;
     background-color: transparent; 
     border: none;
     border-radius: 20px;
-    width: 200px;
-    padding: 0em 0em;
+    width: 10rem;
+    height: 2.5rem;
+    padding: 1em 1em;
     transition-duration: 0.4s;
-    font-size: 15px;
-    line-height: 40px;
+    font-size: 1rem;
 }
-.home_button:hover {
-    background-color: #eeebeb;
-}
-.post_button {
-    display: grid;
-    grid-template-columns: 15% 85%;
-    background-color: transparent; 
-    margin-top: 30px;
-    border: none;
-    border-radius: 20px;
-    width: 200px;
-    height: 40px;
-    padding: 0em 0em;
-    transition-duration: 0.4s;
-    font-size: 15px;
-}
-.post_button:hover {
-    background-color: #eeebeb;
-}
-.me_button {
-    display: grid;
-    grid-template-columns: 15% 85%;
-    background-color: transparent; 
-    margin-top: 30px;
-    border: none;
-    border-radius: 20px;
-    width: 200px;
-    height: 40px;
-    padding: 0em 0em;
-    transition-duration: 0.4s;
-    font-size: 15px;
-}
-.me_button:hover {
+
+
+.button:hover {
     background-color: #eeebeb;
 }
 
-.home_span {
-    padding: 10px;
-}
-
-.post_span {
-    padding: 10px;
-}
-
-.me_span {
-    padding: 10px;
+.span {
+    margin-inline-start: 1em;
 }
 
 

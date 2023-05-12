@@ -35,7 +35,7 @@ function SideBar() {
     <nav className={styles.flex_col}>
       
       <div>
-        <Icon className={styles.logo} icon={mountainIcon} width="50"/>
+        <Icon className={styles.logo} icon={mountainIcon} width="55"/>
         <span className={styles.logo_span}>
           <h1 className={styles.hobby_tracker}>
             Hobby
@@ -46,30 +46,29 @@ function SideBar() {
       </div>
 
       <div className={styles.flex_row}>
-        <div className={styles.flex_col2}>
           
-          <button className={styles.home_button}>
-            <Icon className={styles.home_icon} icon={homeLine} color="#879198" width="50"/>
-            <span className={styles.home_span}>
+          <button className={styles.button}>
+            <Icon className={styles.home_icon} icon={homeLine} color="#879198" width="25"/>
+            <span className={styles.span}>
               Home 
             </span>
           </button>
 
-          <button className={styles.post_button}>
+          <button className={styles.button}>
             <Icon className={styles.post_icon} icon={plusIcon} color="#879198" width="25"/>
-            <span className={styles.post_span}>
+            <span className={styles.span}>
               Post
             </span>
           </button>
 
-          <button className={styles.me_button}>
+          <button className={styles.button}>
             <Icon className={styles.me_icon} icon={userLine} color="#879198" width="25"/>
-            <span className={styles.me_span}>
+            <span className={styles.span}>
               Me
             </span>
           </button>
 
-        </div>
+  
 
       </div>
 
