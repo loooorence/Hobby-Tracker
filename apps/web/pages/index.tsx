@@ -1,14 +1,18 @@
+import React from 'react';
 import SideBar from './components/SideBar';
+import SearchBar from './components/SearchBar';
+import HomeScreen from './components/homescreen';
 
 export function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.css file.
-   */
+  const handleSearch = (searchValue: string) => {
+    console.log("Searching for:", searchValue);
+  };
+
   return (
     <div>
       <SideBar />
+      <SearchBar onSearch={handleSearch} />
+      <HomeScreen />
     </div>
   );
 }
