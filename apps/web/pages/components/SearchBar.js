@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
-import './SearchBar.css';
-import { Icon } from '@iconify/react';
-import searchLine from '@iconify/icons-majesticons/search-line';
+import { FaSearch } from 'react-icons/fa';
+import styles from './SearchBar.module.css';
+
 
 function SearchBar({ onSearch }) {
   const [inputValue, setInputValue] = useState('');
 
+  /* 
+  Function to handle search input
+  */
   const handleSubmit = (event) => {
-    event.preventDefault();
-    onSearch(inputValue);
+    event.preventDefault(); // Prevent page refresh on form submission
+    onSearch(inputValue); // Call the 'onSearch' callback function with the current input value
+    setInputValue(''); // Clear the input field after submitting
   };
 
+  // Render the search bar with an input field and a search button
   return (
-    <div className={styles.SearchBar}>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        <button className= {styles.search-button} type="submit">
-          <Icon className= {styles.search-icon} icon={searchLine} color="#879198" width="25"/>
-        </button>
-      </form>
-    </div>
+    <form className={styles.SearchBar} onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Search"
+        value={inputValue}
+        onChange={e => setInputValue(e.target.value)} // Update the input value state when the input changes
+      />
+      <button type="submit">
+        <FaSearch /> {/* the search icon */}
+      </button>
+    </form>
   );
 }
 
