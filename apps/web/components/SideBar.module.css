@@ -44,11 +44,12 @@
     width: 100px;
 }
 .home_button {
+    display: grid;
+    grid-template-columns: 15% 85%;
     background-color: transparent; 
     border: none;
     border-radius: 20px;
     width: 200px;
-    height: 40px;
     padding: 0em 0em;
     transition-duration: 0.4s;
     font-size: 15px;
@@ -58,6 +59,8 @@
     background-color: #eeebeb;
 }
 .post_button {
+    display: grid;
+    grid-template-columns: 15% 85%;
     background-color: transparent; 
     margin-top: 30px;
     border: none;
@@ -72,6 +75,8 @@
     background-color: #eeebeb;
 }
 .me_button {
+    display: grid;
+    grid-template-columns: 15% 85%;
     background-color: transparent; 
     margin-top: 30px;
     border: none;
@@ -86,26 +91,14 @@
     background-color: #eeebeb;
 }
 
-.home_icon {
-    margin-left: -90px;
-    margin-bottom: -6px;
-}
 .home_span {
     padding: 10px;
 }
 
-.post_icon {
-    margin-left: -100px;
-    margin-bottom: -6px;
-}
 .post_span {
     padding: 10px;
 }
 
-.me_icon {
-    margin-left: -110px;
-    margin-bottom: -6px;
-}
 .me_span {
     padding: 10px;
 }

@@ -32,7 +32,7 @@ function SideBar() {
   };*/
 
   return (
-    <div className={styles.flex_col}>
+    <nav className={styles.flex_col}>
       
       <div>
         <Icon className={styles.logo} icon={mountainIcon} width="50"/>
@@ -56,14 +56,14 @@ function SideBar() {
           </button>
 
           <button className={styles.post_button}>
-            {/* <Icon className={styles.post_icon} icon={plusIcon} color="#879198" width="25"/> */}
+            <Icon className={styles.post_icon} icon={plusIcon} color="#879198" width="25"/>
             <span className={styles.post_span}>
               Post
             </span>
           </button>
 
           <button className={styles.me_button}>
-            {/* <Icon className={styles.me_icon} icon={userLine} color="#879198" width="25"/> */}
+            <Icon className={styles.me_icon} icon={userLine} color="#879198" width="25"/>
             <span className={styles.me_span}>
               Me
             </span>
@@ -73,7 +73,7 @@ function SideBar() {
 
       </div>
 
-    </div>
+    </nav>
 
   );
 }
