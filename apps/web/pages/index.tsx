@@ -12,7 +12,7 @@ export function Index() {
     <div>
       <SideBar />
       <SearchBar onSearch={handleSearch} />
-      <HomeScreen />
+      {/* <HomeScreen /> */}
     </div>
   );
 }

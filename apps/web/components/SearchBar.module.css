@@ -19,16 +19,18 @@
   outline: none;
 }
 
-.search-button {
+.search_button {
   border: none;
   cursor: pointer;
-  background-color: transparent; 
+  background-color: transparent;
   background-size: cover;
   background-repeat: no-repeat;
-  margin-left: 5px;
-  margin-top: 10px;
+  margin-left: 0.5rem;
+  margin-top: 0.1rem;
 }
-
+.search_button:hover {
+  color: rgb(40, 78, 64);
+}
 .search-button:focus {
   outline: none;
 }
@@ -38,6 +40,4 @@
   margin-bottom: -7px;
 }
 
-.search-button :hover {
-  color: #626366d6;
-}
+
