@@ -13,6 +13,15 @@ export type GetPostsVariables = Types.Exact<{ [key: string]: never; }>;
 
 export type GetPosts = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, description: string, authorId: string }> };
 
+export type CreateUserVariables = Types.Exact<{
+  password: Types.Scalars['String'];
+  name: Types.Scalars['String'];
+  email: Types.Scalars['String'];
+}>;
+
+
+export type CreateUser = { __typename?: 'Mutation', createUser: { __typename?: 'User', id: string, email: string, name?: string | null } };
+
 
 export const GetUsersDocument = /*#__PURE__*/ gql`
     query GetUsers {
@@ -33,6 +42,15 @@ export const GetPostsDocument = /*#__PURE__*/ gql`
   }
 }
     `;
+export const CreateUserDocument = /*#__PURE__*/ gql`
+    mutation CreateUser($password: String!, $name: String!, $email: String!) {
+  createUser(data: {password: $password, name: $name, email: $email}) {
+    id
+    email
+    name
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -46,6 +64,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetPosts(variables?: GetPostsVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPosts> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPosts>(GetPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetPosts', 'query');
+    },
+    CreateUser(variables: CreateUserVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateUser> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreateUser>(CreateUserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CreateUser', 'mutation');
     }
   };
 }

@@ -28,6 +28,7 @@
     "@nestjs/platform-fastify": "^9.4.0",
     "@nx/next": "16.0.3",
     "@prisma/client": "^4.13.0",
+    "@tanstack/react-query": "^4.29.5",
     "axios": "^1.0.0",
     "bcrypt": "^5.1.0",
     "class-transformer": "^0.5.1",
