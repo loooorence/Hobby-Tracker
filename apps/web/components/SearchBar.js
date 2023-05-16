@@ -24,7 +24,7 @@ function SearchBar({ onSearch }) {
         value={inputValue}
         onChange={e => setInputValue(e.target.value)} // Update the input value state when the input changes
       />
-      <button type="submit">
+      <button className={styles.search_button} type="submit">
         <FaSearch /> {/* the search icon */}
       </button>
     </form>
