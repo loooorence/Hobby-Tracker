@@ -20,3 +20,17 @@ const GET_POSTS = gql`
     }
   }
 `;
+
+const CREATE_USER = gql`
+  mutation CreateUser($password: String!, $name: String!, $email: String!) {
+    createUser(data:{
+      password:$password,
+      name:$name,
+      email:$email
+    }) {
+      id
+      email
+      name
+    }
+  }
+`;

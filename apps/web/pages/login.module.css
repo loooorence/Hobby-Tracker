@@ -394,3 +394,7 @@ and not sure if that can be done with 1 keyframe */
     }
   }
 }
+
+.has-error {
+  border: 1px solid rgb(244, 33, 46);
+}
