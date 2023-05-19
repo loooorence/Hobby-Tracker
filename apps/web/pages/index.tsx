@@ -2,6 +2,8 @@ import React from 'react';
 import SideBar from '../components/SideBar';
 import SearchBar from '../components/SearchBar';
 import HomeScreen from '../components/homescreen';
+import InstanceWindow from '../components/InstanceWindow';
+import HomeInstance from '../components/HomeInstance';
 
 export function Index() {
   const handleSearch = (searchValue: string) => {
@@ -12,6 +14,7 @@ export function Index() {
     <div>
       <SideBar />
       <SearchBar onSearch={handleSearch} />
+      <HomeInstance />
       {/* <HomeScreen /> */}
     </div>
   );
