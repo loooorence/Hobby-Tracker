@@ -1,44 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Snowburst+One:400|Sora:400');
+
+.InstanceBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #5595ea, #194989);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.logo {
+  font-family: 'Snowburst One';
+  font-size: 4rem;
+  margin-bottom: -2.5rem;
+  text-align: center;
+}
+
 .instance {
-    padding: 1rem;
-    background-color: rgb(219, 214, 214);
-    margin: 5rem auto;
-    height: 30rem;
-    width: 35rem;
-    
-    max-width: 95%;
-    border-radius: 9px;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  position: relative;
+
+  padding: 1rem;
+  background-color: lightpink;
+  margin: 5rem auto;
+  height: 150rem;
+  width: 35rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1.85);
+}
+
+.instance__title {
+  font-size: 2rem;
+  background-color: unset;
+  border: none;
+  border-bottom: 1.5px solid black;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  font-family: 'Snowburst One';
+  outline: none;
+
+}
+
+.instance__fileInput {
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.instance__selectedImage {
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  display: block;
+  max-width: 25rem;
+  height: auto;
+  max-height: 15rem;
+  margin-bottom: 1rem;
+
+  position: static;
+}
+
+.instance__description {
+  z-index: 2;
+  background-color: white;
+  outline: none;
+  resize: none;
+  margin-top: -2.65rem;
+  height: 5.5rem;
+  width: 15rem;
+  position: absolute;
+  right: 52%;
+  border-radius: 5px;
+  border: 2px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1.85);
+}
+
+.instance_addDesc {
+  z-index: 1;
+  display: flex;
+  background-color: lightblue;
+  border: 2px solid black;
+  font-size: 1rem;
+  border-radius: 5px;
+  width: 7rem;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
+  margin-right: auto;
+  position: absolute;
+  cursor: pointer;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.instance_addDesc:hover {
+  background-color: blue;
+  color: white;
+}
+
+
+.instance__hideDesc {
+  z-index: 3;
+  right: 17.1rem;
+  display: flex;
+  border: 2px solid black;
+  width: 1rem;
+  background-color: yellow;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
+  margin-right: auto;
+  margin-top: 1.5rem;
+  position: absolute;
+  cursor: pointer;
+}
+
+.instance__buttonpost {
+  display: flex;
+
+  margin-left: auto;
+  margin-right: 2rem;
+  margin-top: 5rem;
+  background-color: lightblue;
+  border: 2px solid black;
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.instance__buttonpost:hover {
+  background-color: blue;
+  color: white;
+}
+
+.instance__Error {
+  color: red;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: underline;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 2.15rem;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 2.5rem;
   }
-  
+  .instance {
+    height: 40%;
+    width: 65%;
+  }
   .instance__pai {
-    font-size: 18px;
-    font-weight: bold;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.583);
-    padding-bottom: 3px;
-    text-align-last: center;
+    font-size: 1.5rem;
+  }
+  .instance__description {
+    margin-top: 2rem;
+    height: 6.5rem;
+    width: 15rem;
+  }
+  .instance__buttonpost {
+    margin-top: 0.5rem;
+  }
+  .instance__title{
+    font-size: .85rem;
+  }
+  .instance__fileInput{
+    font-size: 0.5rem; 
+    margin-top: .6rem;  
+  }
+  .instance__selectedImage{
+    max-width: 10rem;
+    margin-bottom: 0rem;
+  }
+  .instance__buttonpost{
+    margin-left: auto;
+    font-size: .5rem;
+    height: 1.5rem;
+    text-align: center;
+
+  }
+  .instance_addDesc{
+    margin-left: auto;
+    font-size: .5rem;
+    height: 1.5rem;
+  }
+  .instance__Error{
+    font-size: .5rem;
+    margin-top: .65rem;
+  }
+  .instance__hideDesc{
+    margin-top: 3.5rem;
+    left: 6.4rem;
+    
+  }
+  .instance__description{
+    margin-top: 3.5rem;
+    height: 3rem;
+    width: 7rem;
   }
 
-  .instance__button {
-    font-size: 17px;
-    text-align-last: center;
-    position: relative;
-    bottom: -194px;
-    left: 34%;
-    border-radius: 9px;
-    text-decoration: none;
-    display: inline-block;
-    border: 1px transparent;
-    background-color: rgb(182, 180, 180);
-    padding: 10px 20px;
-    box-shadow: 0 3px 15px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
-  }
-  
-  .instance__picture {
-    padding: 1rem;
-    background-color: rgb(122, 113, 113);
-    margin: 5rem auto;
-    height: 20rem;
-    width: 25rem;
-  }
-  
+}
