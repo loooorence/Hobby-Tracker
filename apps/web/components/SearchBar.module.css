@@ -1,5 +1,5 @@
 .Searchbar {
-  position: fixed;
+  position: flex;
   top: 4px;
   left: 0;
   right: 0;

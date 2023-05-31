@@ -22,7 +22,7 @@
 @media (max-width: 768px) {
   .Instance {
     top: 20px; /* Adjust this as per your design */
-    height: auto; /* Change this to 'auto' for flexible height */
+    height: 50%; /* Change this to 'auto' for flexible height */
     width: 90%; /* Adjust width for smaller screens */
     margin: 2rem auto;
   }
