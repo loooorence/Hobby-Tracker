@@ -13,17 +13,18 @@ export class CheckAuthGuard extends AuthGuard('jwt') {
     return context_.getContext().req;
   }
 
-  override handleRequest(error: any, user: any, info: any, context: any) {
-    if (!user || info || error) {
-      const context_ = GqlExecutionContext.create(context);
-      const reply = context_.getContext().reply;
+  // override handleRequest(error: any, user: any, info: any, context: any) {
+  //   console.log(user, info, error);
+  //   if (!user || info || error) {
+  //     const context_ = GqlExecutionContext.create(context);
+  //     const reply = context_.getContext().reply;
 
-      reply.setCookie('token', '');
-      reply.setCookie('token-expires', '');
+  //     // reply.setCookie('token', '');
+  //     // reply.setCookie('token-expires', '');
+  //     console.log('check-auth error');
+  //     throw error || new UnauthorizedException();
+  //   }
 
-      throw error || new UnauthorizedException();
-    }
-
-    return user;
-  }
+  //   return user;
+  // }
 }

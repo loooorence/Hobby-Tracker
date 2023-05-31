@@ -13,27 +13,31 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       jwtFromRequest: cookieExtractor,
       ignoreExpiration: false,
       secretOrKey: process.env.JWT_SECRET,
-      // jsonWebTokenOptions: { algorithms: ['HS256'] }
+      jsonWebTokenOptions: { algorithms: ['HS256'] },
     });
   }
 
-  async validate(payload: { sub?: string }): Promise<UserJwtPayload> {
-    if (!payload.sub) return false;
+  async validate(payload: any): Promise<any> {
+    console.log(payload);
+    return {
+      id: payload.sub,
+      name: payload.name,
+    };
+    // console.log(payload);
+    // if (!payload.sub) return false;
 
-    return { id: payload.sub };
+    // return { id: payload.sub };
   }
 }
 
 const cookieExtractor = (request: FastifyRequest): string | null => {
-  console.log(request.cookies.token);
-  // const isCookieTokenExist = request.cookies.token;
-  // if (isCookieTokenExist) {
-  //   console.log('Cookie not passed'); // TODO: log
-  //   return null;
-  // }
-  const unsignedCookieToken = request.unsignCookie(
-    request.cookies.token as string
-  );
-  console.log(unsignedCookieToken);
+  const isCookieTokenExist = !!request?.cookies?.token;
+  if (!isCookieTokenExist) {
+    console.log('Cookie not passed'); // TODO: log
+    return null;
+  }
+
+  const unsignedCookieToken = request.unsignCookie(request.cookies.token);
+  // console.log(unsignedCookieToken);
   return unsignedCookieToken?.value || null;
 };

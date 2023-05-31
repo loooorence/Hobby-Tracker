@@ -31,7 +31,13 @@ async function bootstrap() {
     },
   };
 
-  await app.register(fastifyCookie, { secret: 'SECRET' });
+  await app.register(fastifyCookie, {
+    secret: 'SECRET',
+    parseOptions: {
+      httpOnly: true,
+      expires: new Date(new Date().getTime() + 86400000),
+    },
+  });
   await app.register(helmet, {
     contentSecurityPolicy: developmentContentSecurityPolicy,
   });

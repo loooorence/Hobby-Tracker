@@ -18,9 +18,17 @@ export function AuthForm({ isLogin }: Props) {
     mutationKey: ['Login'],
     mutationFn: async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      const re = await gql.Login({ input: { email, password } });
-      console.log(re);
-      return re;
+      return await gql.Login({ input: { email, password } });
+    },
+    onSuccess: () => {
+      router.push('/');
+    },
+  });
+  const signUp = useMutation({
+    mutationKey: ['SignUp'],
+    mutationFn: async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      return await gql.SignUp({ input: { email, password, name } });
     },
     onSuccess: () => {
       router.push('/');
@@ -35,7 +43,10 @@ export function AuthForm({ isLogin }: Props) {
   //so Im not sure what the best way to approach this is
 
   return (
-    <form onSubmit={login.mutate} className={styles['Auth-form']}>
+    <form
+      onSubmit={isLogin ? login.mutate : signUp.mutate}
+      className={styles['Auth-form']}
+    >
       <h2 className={styles['Auth-title']}>{isLogin ? 'Login' : 'Sign Up'}</h2>
       <div className={styles['Auth-social-media']}>
         <button aria-label="login with facebook">
@@ -63,7 +74,7 @@ export function AuthForm({ isLogin }: Props) {
           <input
             type="text"
             name="name"
-            placeholder="Username"
+            placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
