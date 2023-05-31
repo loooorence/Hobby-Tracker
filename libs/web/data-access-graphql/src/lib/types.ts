@@ -12,14 +12,31 @@ export type Scalars = {
   Float: number;
 };
 
+export type LoginResponse = {
+  __typename?: 'LoginResponse';
+  access_token: Scalars['String'];
+  user: User;
+};
+
+export type LoginUserInput = {
+  email: Scalars['String'];
+  password: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
+  Login: LoginResponse;
   createPost: Post;
   createUser: User;
   removePost: Post;
   removeUser: User;
   updatePost: Post;
   updateUser: User;
+};
+
+
+export type MutationLoginArgs = {
+  loginUserInput: LoginUserInput;
 };
 
 
@@ -231,6 +248,7 @@ export type User = {
   email: Scalars['String'];
   id: Scalars['ID'];
   name?: Maybe<Scalars['String']>;
+  password: Scalars['String'];
   posts?: Maybe<Array<Post>>;
 };
 
@@ -245,6 +263,7 @@ export type UserCountAggregate = {
   email: Scalars['Int'];
   id: Scalars['Int'];
   name: Scalars['Int'];
+  password: Scalars['Int'];
 };
 
 export type UserCreateInput = {
@@ -278,6 +297,7 @@ export type UserMaxAggregate = {
   email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
 };
 
 export type UserMinAggregate = {
@@ -285,6 +305,7 @@ export type UserMinAggregate = {
   email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
 };
 
 export type UserUpdateInput = {

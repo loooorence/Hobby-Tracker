@@ -38,7 +38,6 @@ model User {
   /// @Validator.IsString()
   /// @Validator.MaxLength(100)
   /// @Validator.MinLength(8)
-  /// @HideField()
   password String
   posts    Post[]
 }

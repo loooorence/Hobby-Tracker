@@ -9,7 +9,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Welcome to web!</title>
+        <title>Hobby Tracker</title>
       </Head>
       <main className="app">
         <QueryClientProvider client={queryClient}>

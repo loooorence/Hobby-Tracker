@@ -7,6 +7,8 @@ import {
   FindUniqueUserArgs,
   DeleteOneUserArgs,
 } from '../../../generated-db-types/src/lib';
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from '../../../auth/src//lib/jwt-auth.guard';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -17,6 +19,7 @@ export class UserResolver {
     return this.userService.create(createOneUserArgs);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Query(() => [User])
   users() {
     return this.userService.findAll();

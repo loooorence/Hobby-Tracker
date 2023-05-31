@@ -5,6 +5,7 @@ import { UserModule } from '../../../../libs/api/feature-user/src/';
 import { PostModule } from '../../../../libs/api/feature-post/src/';
 import * as path from 'path';
 import { APP_PIPE } from '@nestjs/core';
+import { AuthModule } from '../../../../libs/api/auth/src';
 
 const validationProvider = {
   provide: APP_PIPE,
@@ -20,6 +21,7 @@ const validationProvider = {
     }),
     UserModule,
     PostModule,
+    AuthModule,
   ],
   providers: [validationProvider],
 })

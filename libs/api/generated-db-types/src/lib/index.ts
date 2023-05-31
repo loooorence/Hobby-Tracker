@@ -7,7 +7,6 @@ import { Int } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { registerEnumType } from '@nestjs/graphql';
 import { ID } from '@nestjs/graphql';
-import { HideField } from '@nestjs/graphql';
 import * as Validator from 'class-validator';
 
 export enum UserScalarFieldEnum {
@@ -1083,7 +1082,7 @@ export class UserCountAggregate {
     email!: number;
     @Field(() => Int, {nullable:false})
     name!: number;
-    @HideField()
+    @Field(() => Int, {nullable:false})
     password!: number;
     @Field(() => Int, {nullable:false})
     _all!: number;
@@ -1225,7 +1224,10 @@ export class UserGroupBy {
     @Validator.MaxLength(100)
     @Validator.MinLength(3)
     name?: string;
-    @HideField()
+    @Field(() => String, {nullable:false})
+    @Validator.IsString()
+    @Validator.MaxLength(100)
+    @Validator.MinLength(8)
     password!: string;
     @Field(() => UserCountAggregate, {nullable:true})
     _count?: InstanceType<typeof UserCountAggregate>;
@@ -1259,7 +1261,10 @@ export class UserMaxAggregate {
     @Validator.MaxLength(100)
     @Validator.MinLength(3)
     name?: string;
-    @HideField()
+    @Field(() => String, {nullable:true})
+    @Validator.IsString()
+    @Validator.MaxLength(100)
+    @Validator.MinLength(8)
     password?: string;
 }
 
@@ -1299,7 +1304,10 @@ export class UserMinAggregate {
     @Validator.MaxLength(100)
     @Validator.MinLength(3)
     name?: string;
-    @HideField()
+    @Field(() => String, {nullable:true})
+    @Validator.IsString()
+    @Validator.MaxLength(100)
+    @Validator.MinLength(8)
     password?: string;
 }
 
@@ -1597,7 +1605,7 @@ export class User {
     email!: string;
     @Field(() => String, {nullable:true})
     name!: string | null;
-    @HideField()
+    @Field(() => String, {nullable:false})
     password!: string;
     @Field(() => [Post], {nullable:true})
     posts?: Array<Post>;
