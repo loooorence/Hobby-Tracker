@@ -1,20 +1,33 @@
-.instance {
-    position:relative; top:50px;
-    padding: 1rem;
-    background-color: rgb(219, 214, 214);
-    margin: 5rem auto;
-    height: 40rem;
-    width: 35rem;
-    
-    max-width: 95%;
-    border-radius: 9px;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+.Instance {
+  position: relative;
+  top: 50px;
+  padding: 1rem;
+  background-color: rgb(219, 214, 214);
+  margin: 5rem auto;
+  height: 40rem;
+  width: 35rem;
+  max-width: 95%;
+  border-radius: 9px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.Instance_top_text {
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.583);
+  padding-bottom: 3px;
+  text-align-last: left;
+}
+
+@media (max-width: 768px) {
+  .Instance {
+    top: 20px; /* Adjust this as per your design */
+    height: auto; /* Change this to 'auto' for flexible height */
+    width: 90%; /* Adjust width for smaller screens */
+    margin: 2rem auto;
   }
 
-  .instance_top_text {
-    font-size: 18px;
-    font-weight: bold;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.583);
-    padding-bottom: 3px;
-    text-align-last: left;
+  .Instance_top_text {
+    font-size: 16px; /* Reduce font size for smaller screens */
   }
+}
