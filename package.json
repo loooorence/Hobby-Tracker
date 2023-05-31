@@ -14,6 +14,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",
+    "@fastify/cookie": "^8.3.0",
     "@fastify/helmet": "^10.1.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
@@ -21,6 +22,7 @@
     "@mercuriusjs/gateway": "^1.2.0",
     "@mui/material": "^5.12.3",
     "@nestjs/common": "^9.0.0",
+    "@nestjs/config": "^2.3.2",
     "@nestjs/core": "^9.0.0",
     "@nestjs/graphql": "^11.0.5",
     "@nestjs/jwt": "^10.0.3",

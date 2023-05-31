@@ -6,5 +6,6 @@ import { PrismaModule } from '../../../data-access-api/src/';
 @Module({
   providers: [UserResolver, UserService],
   imports: [PrismaModule],
+  exports: [UserService],
 })
 export class UserModule {}

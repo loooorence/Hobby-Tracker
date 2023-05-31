@@ -21,7 +21,8 @@ const Users = () => {
     queryFn: () => gql.GetPosts(),
   });
 
-  console.log(dataPosts);
+  // console.log(dataPosts);
+  // console.log(dataUsers);
 
   const users = dataUsers?.users.map((user) => (
     <div key={user.id}>

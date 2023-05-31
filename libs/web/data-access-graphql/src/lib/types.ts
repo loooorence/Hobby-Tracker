@@ -26,6 +26,7 @@ export type LoginUserInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   Login: LoginResponse;
+  SignUp: LoginResponse;
   createPost: Post;
   createUser: User;
   removePost: Post;
@@ -37,6 +38,11 @@ export type Mutation = {
 
 export type MutationLoginArgs = {
   loginUserInput: LoginUserInput;
+};
+
+
+export type MutationSignUpArgs = {
+  signUpInput: SignUpUserInput;
 };
 
 
@@ -226,6 +232,12 @@ export enum QueryMode {
   Default = 'default',
   Insensitive = 'insensitive'
 }
+
+export type SignUpUserInput = {
+  email: Scalars['String'];
+  name: Scalars['String'];
+  password: Scalars['String'];
+};
 
 export type StringFilter = {
   contains?: InputMaybe<Scalars['String']>;

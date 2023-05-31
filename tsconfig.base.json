@@ -14,6 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "noPropertyAccessFromIndexSignature": false,
     "paths": {
       "@hobby-tracker/api/auth": ["libs/api/auth/src/index.ts"],
       "@hobby-tracker/api/feature-post": ["libs/api/feature-post/src/index.ts"],

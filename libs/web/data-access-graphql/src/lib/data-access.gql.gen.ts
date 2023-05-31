@@ -29,6 +29,13 @@ export type LoginVariables = Types.Exact<{
 
 export type Login = { __typename?: 'Mutation', Login: { __typename?: 'LoginResponse', access_token: string, user: { __typename?: 'User', email: string, name?: string | null } } };
 
+export type SignUpVariables = Types.Exact<{
+  input: Types.SignUpUserInput;
+}>;
+
+
+export type SignUp = { __typename?: 'Mutation', SignUp: { __typename?: 'LoginResponse', access_token: string, user: { __typename?: 'User', email: string, name?: string | null, id: string } } };
+
 
 export const GetUsersDocument = /*#__PURE__*/ gql`
     query GetUsers {
@@ -69,6 +76,18 @@ export const LoginDocument = /*#__PURE__*/ gql`
   }
 }
     `;
+export const SignUpDocument = /*#__PURE__*/ gql`
+    mutation SignUp($input: SignUpUserInput!) {
+  SignUp(signUpInput: $input) {
+    user {
+      email
+      name
+      id
+    }
+    access_token
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -88,6 +107,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     Login(variables: LoginVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Login> {
       return withWrapper((wrappedRequestHeaders) => client.request<Login>(LoginDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Login', 'mutation');
+    },
+    SignUp(variables: SignUpVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SignUp> {
+      return withWrapper((wrappedRequestHeaders) => client.request<SignUp>(SignUpDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'SignUp', 'mutation');
     }
   };
 }

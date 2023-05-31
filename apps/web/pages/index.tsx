@@ -7,7 +7,7 @@ import HomeInstance from '../components/HomeInstance';
 
 export function Index() {
   const handleSearch = (searchValue: string) => {
-    console.log("Searching for:", searchValue);
+    console.log('Searching for:', searchValue);
   };
 
   return (

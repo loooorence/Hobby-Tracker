@@ -8,7 +8,8 @@ import {
   DeleteOneUserArgs,
 } from '../../../generated-db-types/src/lib';
 import { UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../../../auth/src//lib/jwt-auth.guard';
+// import { JwtAuthGuard } from '../../../auth/src/lib/guards/jwt-auth.guard';
+import { CheckAuthGuard } from '../../../auth/src/lib/guards/check-auth.guard';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -19,7 +20,7 @@ export class UserResolver {
     return this.userService.create(createOneUserArgs);
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(CheckAuthGuard)
   @Query(() => [User])
   users() {
     return this.userService.findAll();

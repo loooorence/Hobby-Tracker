@@ -6,6 +6,7 @@ import { PostModule } from '../../../../libs/api/feature-post/src/';
 import * as path from 'path';
 import { APP_PIPE } from '@nestjs/core';
 import { AuthModule } from '../../../../libs/api/auth/src';
+import { ConfigModule } from '@nestjs/config';
 
 const validationProvider = {
   provide: APP_PIPE,
@@ -14,6 +15,7 @@ const validationProvider = {
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     GraphQLModule.forRoot<MercuriusDriverConfig>({
       driver: MercuriusDriver,
       graphiql: true,

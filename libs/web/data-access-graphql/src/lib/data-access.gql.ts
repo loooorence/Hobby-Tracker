@@ -42,3 +42,16 @@ const Login = gql`
     }
   }
 `;
+
+const SignUp = gql`
+  mutation SignUp($input: SignUpUserInput!) {
+    SignUp(signUpInput: $input) {
+      user {
+        email
+        name
+        id
+      }
+      access_token
+    }
+  }
+`;

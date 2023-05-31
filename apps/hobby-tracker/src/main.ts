@@ -12,6 +12,7 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import helmet from '@fastify/helmet';
+import fastifyCookie from '@fastify/cookie';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -19,9 +20,26 @@ async function bootstrap() {
     new FastifyAdapter()
   );
 
-  // TODO: contentSecurityPolicy should turn on in production
-  await app.register(helmet, { contentSecurityPolicy: false });
-  app.enableCors();
+  const developmentContentSecurityPolicy = {
+    directives: {
+      scriptSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        "'unsafe-eval'",
+        'https://unpkg.com/',
+      ],
+    },
+  };
+
+  await app.register(fastifyCookie, { secret: 'SECRET' });
+  await app.register(helmet, {
+    contentSecurityPolicy: developmentContentSecurityPolicy,
+  });
+
+  app.enableCors({
+    origin: true,
+    credentials: true,
+  });
 
   const port = process.env.PORT || 3000;
   await app.listen(port);
