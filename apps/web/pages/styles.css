@@ -25,6 +25,8 @@
   --gray-900: #18181b;
   --gray-950: #09090b;
 
+  --error-color: rgb(244, 33, 46);
+
   --auth-tween-time: 200ms;
 }
 

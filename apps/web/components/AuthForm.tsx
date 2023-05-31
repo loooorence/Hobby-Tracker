@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { gql } from '../data-access/graphql-client';
 import styles from '../pages/login.module.css';
 import { Icon } from '@iconify/react';
@@ -13,7 +13,11 @@ export function AuthForm({ isLogin }: Props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const router = useRouter();
+  
   const login = useMutation({
     mutationKey: ['Login'],
     mutationFn: async (event: FormEvent<HTMLFormElement>) => {
@@ -35,12 +39,53 @@ export function AuthForm({ isLogin }: Props) {
     },
   });
 
-  //TODO: add error msgs
-  //I want to have error msgs like "bad username", "bad pw", etc
-  //but currently mutation.error.message is pretty hard to parse
-  //and graphql error responses can be pretty vague eg: "Bad Request Exception"
-  //when username or pw is too short/long
-  //so Im not sure what the best way to approach this is
+  // name form validation
+  useEffect(() => {
+    if (name.length === 0) {
+      // no error message, but still have error border
+      setNameError(' ');
+      return;
+    }
+    if (name.length < 3) {
+      setNameError("Name too short");
+      return;
+    }
+    if (name.length > 100) {
+      setNameError("Name too long");
+      return;
+    }
+    // valid name so don't set any error text
+    setNameError('');
+  }, [name]);
+  // email form validation 
+  useEffect(() => {
+    // simplified regex for basic email checking
+    // https://stackoverflow.com/a/9204568
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      // valid email so don't set any error text
+      setEmailError('');
+    } else {
+      setEmailError('Invalid email');
+    }
+  }, [email]);
+  // password form validation
+  useEffect(() => {
+    if (password.length === 0) {
+      // no error message, but still have error border
+      setPasswordError(' ');
+      return;
+    }
+    if (password.length < 8) {
+      setPasswordError("Password too short");
+      return;
+    }
+    if (password.length > 100) {
+      setPasswordError("Password too long");
+      return;
+    }
+    // valid password so don't set any error text
+    setPasswordError('');
+  }, [password]);
 
   return (
     <form
@@ -63,26 +108,30 @@ export function AuthForm({ isLogin }: Props) {
         {isLogin ? 'or use your email:' : 'or use your email for registration:'}
       </div>
       {!isLogin && (
-        <div
-          className={
-            login.isError
-              ? `${styles['Auth-input']} ${styles['has-error']}`
-              : styles['Auth-input']
-          }
-        >
-          <Icon icon="mdi:user" />
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
+        <>
+          <div
+            className={
+              nameError !== ''
+                ? `${styles['Auth-input']} ${styles['has-error']}`
+                : styles['Auth-input']
+            }
+          >
+            <Icon icon="mdi:user" />
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          {nameError !== '' && (<span className={styles['error-text']}>{nameError}</span>)}
+        </>
       )}
+
       <div
         className={
-          login.isError
+          emailError !== ''
             ? `${styles['Auth-input']} ${styles['has-error']}`
             : styles['Auth-input']
         }
@@ -96,9 +145,11 @@ export function AuthForm({ isLogin }: Props) {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
+      {emailError !== '' && <span className={styles['error-text']}>{emailError}</span>}
+
       <div
         className={
-          login.isError
+          passwordError !== ''
             ? `${styles['Auth-input']} ${styles['has-error']}`
             : styles['Auth-input']
         }
@@ -112,6 +163,9 @@ export function AuthForm({ isLogin }: Props) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
+      {passwordError !== '' && <span className={styles['error-text']}>{passwordError}</span>}
+      {!isLogin && signUp.isError && <span className={styles['error-text']}>Account already exists, use another email</span>}
+
       {isLogin && (
         <a href="#" className={styles['Auth-forgot']}>
           Forgot your password?
@@ -121,6 +175,7 @@ export function AuthForm({ isLogin }: Props) {
         type="submit"
         value={isLogin ? 'Login' : 'Sign Up'}
         className={styles['Auth-submit']}
+        disabled={!isLogin ? nameError !== '' || emailError !== '' || passwordError !== '' : emailError !== '' || passwordError !== ''}
       ></input>
     </form>
   );

@@ -110,6 +110,15 @@
   background-color: var(--blue-600);
 }
 
+.Auth-submit[disabled] {
+  opacity: 0.5;
+}
+
+.Auth-submit[disabled]:hover {
+  background-color: var(--blue-500);
+  cursor: not-allowed;
+}
+
 .Auth-social-media {
   margin-top: 2rem;
 }
@@ -396,5 +405,12 @@ and not sure if that can be done with 1 keyframe */
 }
 
 .has-error {
-  border: 1px solid rgb(244, 33, 46);
+  border: 1px solid var(--error-color);
+}
+
+.error-text {
+  align-self: flex-start;
+  margin-inline-start: 1.8rem;
+  font-size: 0.8rem;
+  color: var(--error-color);
 }
