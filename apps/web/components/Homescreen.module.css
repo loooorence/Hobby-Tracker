@@ -7,7 +7,7 @@
     box-sizing: border-box;
   } */
 /* Default styling */
-.GridContainer {
+.Grid_Container {
   display: grid;
   grid-template-columns: repeat(
     8,
@@ -19,7 +19,7 @@
   box-sizing: border-box;
 }
 
-.GridItem img {
+.Grid_Item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -29,7 +29,7 @@
 /* Styling for mobile screens */
 @media screen and (max-width: 768px) {
   /* Adjust this value according to your needs */
-  .gridContainer {
+  .Grid_Container {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }

@@ -55,7 +55,7 @@ function InstanceWindow() {
           type="text"
           value={title}
           onChange={titleChangeHandler}
-          className={styles.Instance__title}
+          className={styles.Instance_title}
           placeholder="Enter Instance Title"
         />
 
@@ -63,17 +63,17 @@ function InstanceWindow() {
           <img
             src={URL.createObjectURL(selectedFile)}
             alt="Selected"
-            className={styles.Instance__selectedImage}
+            className={styles.Instance_selectedImage}
           />
         )}
 
-        <label htmlFor="fileInput" className={styles.Instance__fileLabel}>
+        <label htmlFor="fileInput" className={styles.Instance_fileLabel}>
           <input
             id="fileInput"
             type="file"
             accept="image/*"
             onChange={fileChangeHandler}
-            className={styles.Instance__fileInput}
+            className={styles.Instance_fileInput}
           />
         </label>
 
@@ -81,23 +81,23 @@ function InstanceWindow() {
           <button
             type="button"
             onClick={stopEditingHandler}
-            className={styles.Instance__hideDesc}
+            className={styles.Instance_hideDesc}
           >
             X
           </button>
         )}
 
-        <div className={styles.Instance__descriptionContainer}>
+        <div className={styles.Instance_descriptionContainer}>
           {showDescription && (
             <textarea
               placeholder="Enter a description"
               value={description}
               onChange={descriptionChangeHandler}
-              className={styles.Instance__description}
+              className={styles.Instance_description}
             />
           )}
 
-          <div className={styles.Instance__buttonsContainer}>
+          <div className={styles.Instance_buttonsContainer}>
             <button
               type="button"
               onClick={startEditingHandler}
@@ -109,7 +109,7 @@ function InstanceWindow() {
             <button
               type="button"
               onClick={postHandler}
-              className={styles.Instance__buttonpost}
+              className={styles.Instance_buttonpost}
             >
               Post
             </button>
@@ -117,7 +117,7 @@ function InstanceWindow() {
         </div>
 
         {errorMessage && (
-          <div className={styles.Instance__Error}>{errorMessage}</div>
+          <div className={styles.Instance_Error}>{errorMessage}</div>
         )}
       </div>
     </div>
