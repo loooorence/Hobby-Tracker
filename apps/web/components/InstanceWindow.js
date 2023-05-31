@@ -49,17 +49,18 @@ function InstanceWindow() {
 
   return (
     <div className={styles.InstanceBackdrop}>
-      <h1 className={styles.logo}>Hobby Tracker</h1>
+      {/* <h1 className={styles.logo}>Hobby Tracker</h1> */}
       <div className={styles.instance}>
         <input
           type="text"
           value={title}
           onChange={titleChangeHandler}
           className={styles.instance__title}
-          placeholder="Enter Instance Title"
+          placeholder="Title"
         />
 
         {selectedFile && (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={URL.createObjectURL(selectedFile)}
             alt="Selected"

@@ -1,80 +1,54 @@
-@import url('https://fonts.googleapis.com/css?family=Snowburst+One:400|Sora:400');
-
 .InstanceBackdrop {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, #5595ea, #194989);
+  background: #d4cfcf;;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; 
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-.logo {
-  font-family: 'Snowburst One';
-  font-size: 4rem;
-  margin-bottom: -2.5rem;
-  text-align: center;
-}
-
 .instance {
-  position: relative;
-
-  padding: 1rem;
-  background-color: lightpink;
+  border: none;
+  background-color: #eeebeb;;
   margin: 5rem auto;
   height: 150rem;
   width: 35rem;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 1.85);
+  border-radius: 15px;
 }
 
 .instance__title {
-  font-size: 2rem;
-  background-color: unset;
-  border: none;
-  border-bottom: 1.5px solid black;
-  padding-bottom: 0.5rem;
-  text-align: center;
-  font-family: 'Snowburst One';
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+  background-color: transparent;
+  font-family: system-ui;
   outline: none;
-
 }
 
 .instance__fileInput {
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
 }
 
 .instance__selectedImage {
-  margin-left: auto;
-  margin-right: auto;
-  align-items: center;
-  justify-content: center;
   margin-top: 1rem;
   display: block;
-  max-width: 25rem;
-  height: auto;
-  max-height: 15rem;
-  margin-bottom: 1rem;
-
+  width: 35rem;
+  height: 30rem;
+  object-fit: cover;
   position: static;
 }
 
 .instance__description {
+  border: none;
   z-index: 2;
-  background-color: white;
+  background-color: #d4cfcf;
   outline: none;
   resize: none;
   margin-top: -2.65rem;
@@ -83,38 +57,33 @@
   position: absolute;
   right: 52%;
   border-radius: 5px;
-  border: 2px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 1.85);
 }
 
 .instance_addDesc {
+  border: none;
+  color: rgb(40, 78, 64);
   z-index: 1;
   display: flex;
-  background-color: lightblue;
-  border: 2px solid black;
   font-size: 1rem;
-  border-radius: 5px;
-  width: 7rem;
+  font-weight: 550;
   justify-content: center;
   align-items: center;
-  margin-left: 2rem;
+  margin-left: 0.5rem;
   margin-right: auto;
   position: absolute;
-  cursor: pointer;
-  transition: background-color 0.5s ease, color 0.5s ease;
+
 }
 
 .instance_addDesc:hover {
-  background-color: blue;
-  color: white;
+  color: rgb(21, 40, 33);
 }
 
 
-.instance__hideDesc {
+/* .instance__hideDesc {
+  border: none;
   z-index: 3;
   right: 17.1rem;
   display: flex;
-  border: 2px solid black;
   width: 1rem;
   background-color: yellow;
   justify-content: center;
@@ -124,27 +93,20 @@
   margin-top: 1.5rem;
   position: absolute;
   cursor: pointer;
-}
+} */
 
 .instance__buttonpost {
   display: flex;
-
+  border: none;
   margin-left: auto;
-  margin-right: 2rem;
-  margin-top: 5rem;
-  background-color: lightblue;
-  border: 2px solid black;
-  color: black;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  margin-right: 0.5rem;
+  color: rgb(40, 78, 64);
   font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  font-weight: 550;
 }
 
 .instance__buttonpost:hover {
-  background-color: blue;
-  color: white;
+  color: rgb(21, 40, 33);
 }
 
 .instance__Error {
@@ -161,7 +123,7 @@
   margin-top: 2.15rem;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .logo {
     font-size: 2.5rem;
   }
@@ -171,12 +133,12 @@
   }
   .instance__pai {
     font-size: 1.5rem;
-  }
+  } 
   .instance__description {
     margin-top: 2rem;
     height: 6.5rem;
     width: 15rem;
-  }
+  } 
   .instance__buttonpost {
     margin-top: 0.5rem;
   }
@@ -218,4 +180,4 @@
     width: 7rem;
   }
 
-}
+} */
