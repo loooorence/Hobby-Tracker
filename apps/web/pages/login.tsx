@@ -1,9 +1,5 @@
-import { FormEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './login.module.css';
-import { Icon } from '@iconify/react';
-import { useMutation } from '@tanstack/react-query';
-import { gql } from '../data-access/graphql-client';
-import { useRouter } from 'next/router';
 import { AuthPanel } from '../components/AuthPanel';
 import { AuthForm } from '../components/AuthForm';
 
@@ -52,11 +48,11 @@ export function Login() {
   };
 
   return (
-    <div ref={authContainer} className={styles['Auth-container']}>
-      <div ref={authPanelContainer} className={styles['Auth-panel-container']}>
+    <div ref={authContainer} className={styles.container}>
+      <div ref={authPanelContainer} className={styles['panel-container']}>
         <AuthPanel isLogin={isLogin} toggle={toggle}></AuthPanel>
       </div>
-      <div className={styles['Auth-form-container']}>
+      <div className={styles['form-container']}>
         <AuthForm isLogin={isLogin}></AuthForm>
       </div>
     </div>

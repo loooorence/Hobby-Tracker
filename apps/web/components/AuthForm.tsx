@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { FormEvent, useEffect, useState } from 'react';
 import { gql } from '../data-access/graphql-client';
-import styles from '../pages/login.module.css';
+import styles from './authform.module.css';
 import { Icon } from '@iconify/react';
 
 type Props = {
@@ -90,10 +90,10 @@ export function AuthForm({ isLogin }: Props) {
   return (
     <form
       onSubmit={isLogin ? login.mutate : signUp.mutate}
-      className={styles['Auth-form']}
+      className={styles.form}
     >
-      <h2 className={styles['Auth-title']}>{isLogin ? 'Login' : 'Sign Up'}</h2>
-      <div className={styles['Auth-social-media']}>
+      <h2 className={styles.title}>{isLogin ? 'Login' : 'Sign Up'}</h2>
+      <div className={styles['social-media']}>
         <button aria-label="login with facebook">
           <Icon icon="basil:facebook-solid" />
         </button>
@@ -104,7 +104,7 @@ export function AuthForm({ isLogin }: Props) {
           <Icon icon="mdi:twitter" />
         </button>
       </div>
-      <div className={styles['Auth-note']}>
+      <div className={styles.note}>
         {isLogin ? 'or use your email:' : 'or use your email for registration:'}
       </div>
       {!isLogin && (
@@ -112,8 +112,8 @@ export function AuthForm({ isLogin }: Props) {
           <div
             className={
               nameError !== ''
-                ? `${styles['Auth-input']} ${styles['has-error']}`
-                : styles['Auth-input']
+                ? `${styles.input} ${styles['has-error']}`
+                : styles.input
             }
           >
             <Icon icon="mdi:user" />
@@ -132,8 +132,8 @@ export function AuthForm({ isLogin }: Props) {
       <div
         className={
           emailError !== ''
-            ? `${styles['Auth-input']} ${styles['has-error']}`
-            : styles['Auth-input']
+            ? `${styles.input} ${styles['has-error']}`
+            : styles.input
         }
       >
         <Icon icon="mdi:envelope" />
@@ -150,8 +150,8 @@ export function AuthForm({ isLogin }: Props) {
       <div
         className={
           passwordError !== ''
-            ? `${styles['Auth-input']} ${styles['has-error']}`
-            : styles['Auth-input']
+            ? `${styles.input} ${styles['has-error']}`
+            : styles.input
         }
       >
         <Icon icon="material-symbols:lock" />
@@ -167,14 +167,14 @@ export function AuthForm({ isLogin }: Props) {
       {!isLogin && signUp.isError && <span className={styles['error-text']}>Account already exists, use another email</span>}
 
       {isLogin && (
-        <a href="#" className={styles['Auth-forgot']}>
+        <a href="#" className={styles.forgot}>
           Forgot your password?
         </a>
       )}
       <input
         type="submit"
         value={isLogin ? 'Login' : 'Sign Up'}
-        className={styles['Auth-submit']}
+        className={styles.submit}
         disabled={!isLogin ? nameError !== '' || emailError !== '' || passwordError !== '' : emailError !== '' || passwordError !== ''}
       ></input>
     </form>

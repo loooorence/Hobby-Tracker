@@ -1,178 +1,11 @@
-.Auth-panel-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--gray-50);
-  inline-size: 25vw;
-  margin: auto;
-  text-align: center;
-}
-
-.Auth-panel-toggle {
-  display: block;
-  margin: auto;
-  margin-top: 6rem;
-  border-radius: 9999px;
-  border: 2px solid var(--gray-50);
-  color: var(--gray-100);
-  background: none;
-  font-size: 1.1rem;
-  font-weight: 600;
-  height: 2.7rem;
-  max-width: 400px;
-  padding-left: 1.3em;
-  padding-right: 1.3em;
-  text-transform: uppercase;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.Auth-panel-toggle:hover {
-  background-color: var(--blue-400);
-}
-
-@media (max-width: 768px) {
-  .Auth-panel-title {
-    font-size: 2.5rem;
-    inline-size: 75vw;
-  }
-
-  .Auth-panel-toggle {
-    margin-top: 3rem;
-    font-size: 0.9rem;
-  }
-}
-
-.Auth-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--gray-900);
-}
-
-.Auth-input {
-  background-color: var(--gray-200);
-  border-radius: 9999px;
-  margin-top: 1.5rem;
-  min-width: 350px;
-  height: 2.7rem;
-  display: grid;
-  grid-template-columns: 15% 85%;
-  padding-inline-start: 0.4em;
-}
-
-.Auth-input svg {
-  line-height: 1;
-  font-size: 1.1rem;
-  display: block;
-  margin: auto;
-  color: var(--gray-500);
-}
-
-.Auth-input input::placeholder {
-  color: var(--gray-500);
-  font-weight: 400;
-}
-
-.Auth-input input {
-  background: none;
-  border: none;
-  outline: none;
-  line-height: 1;
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--gray-800);
-}
-
-.Auth-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.Auth-submit {
-  border-radius: 9999px;
-  border: none;
-  color: var(--gray-100);
-  background-color: var(--blue-500);
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-top: 2rem;
-  height: 2.7rem;
-  max-width: 400px;
-  padding-left: 1.3em;
-  padding-right: 1.3em;
-  text-transform: uppercase;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.Auth-submit:hover {
-  background-color: var(--blue-600);
-}
-
-.Auth-submit[disabled] {
-  opacity: 0.5;
-}
-
-.Auth-submit[disabled]:hover {
-  background-color: var(--blue-500);
-  cursor: not-allowed;
-}
-
-.Auth-social-media {
-  margin-top: 2rem;
-}
-
-.Auth-social-media button svg {
-  line-height: 1;
-  width: 100%;
-  height: 100%;
-  display: block;
-  margin: auto;
-}
-
-.Auth-social-media button {
-  width: 2.7rem;
-  height: 2.7rem;
-  margin: 0 0.5rem;
-  border-radius: 9999px;
-  padding: 0.4em;
-  border: 1px solid var(--gray-700);
-  background-color: var(--gray-100);
-  color: var(--gray-400);
-  cursor: pointer;
-}
-
-.Auth-social-media button:hover {
-  border: 1px solid var(--blue-500);
-  color: var(--blue-500);
-}
-
-.Auth-note {
-  margin-top: 2rem;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--gray-400);
-}
-
-.Auth-forgot {
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  color: var(--gray-600);
-}
-
-.Auth-forgot:hover {
-  color: var(--blue-500);
-}
-
-.Auth-container {
+.container {
   position: relative;
   background: none;
   min-height: 100vh;
   overflow: hidden;
 }
 
-.Auth-container::before {
+.container::before {
   content: '';
   position: absolute;
   z-index: 2;
@@ -184,11 +17,11 @@
   /* transition: clip-path 2s ease-in-out; */
 }
 
-.Auth-container.signup::before {
+.container.signup::before {
   clip-path: inset(0 0 0 66%);
 }
 
-.Auth-panel-container {
+.panel-container {
   z-index: 3;
   position: absolute;
   top: 50%;
@@ -196,11 +29,11 @@
   transform: translate(-50%, -50%);
 }
 
-.signup .Auth-panel-container {
+.signup .panel-container {
   left: 84%;
 }
 
-.Auth-form-container {
+.form-container {
   z-index: 1;
   position: absolute;
   top: 50%;
@@ -209,7 +42,7 @@
   transition: left calc(2 * var(--auth-tween-time)) ease-in-out;
 }
 
-.signup .Auth-form-container {
+.signup .form-container {
   left: 33%;
 }
 
@@ -306,31 +139,31 @@ and not sure if that can be done with 1 keyframe */
 }
 
 @media (max-width: 768px) {
-  .Auth-container::before {
+  .container::before {
     clip-path: inset(66% 0 0 0);
   }
 
-  .Auth-container.signup::before {
+  .container.signup::before {
     clip-path: inset(0 0 66% 0);
   }
 
-  .Auth-panel-container {
+  .panel-container {
     top: 83%;
     left: 50%;
   }
 
-  .signup .Auth-panel-container {
+  .signup .panel-container {
     top: 17%;
     left: 50%;
   }
 
-  .Auth-form-container {
+  .form-container {
     top: 33%;
     left: 50%;
     transition: top calc(2 * var(--auth-tween-time)) ease-in-out;
   }
 
-  .signup .Auth-form-container {
+  .signup .form-container {
     top: 66%;
     left: 50%;
   }
@@ -402,15 +235,4 @@ and not sure if that can be done with 1 keyframe */
       top: 83%;
     }
   }
-}
-
-.has-error {
-  border: 1px solid var(--error-color);
-}
-
-.error-text {
-  align-self: flex-start;
-  margin-inline-start: 1.8rem;
-  font-size: 0.8rem;
-  color: var(--error-color);
 }
