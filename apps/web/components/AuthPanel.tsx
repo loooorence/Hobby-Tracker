@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './authpanel.module.css';
+import styles from './AuthPanel.module.css';
 
 type Props = {
   isLogin: boolean;

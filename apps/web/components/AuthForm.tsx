@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { FormEvent, useEffect, useState } from 'react';
 import { gql } from '../data-access/graphql-client';
-import styles from './authform.module.css';
+import styles from './AuthForm.module.css';
 import { Icon } from '@iconify/react';
 
 type Props = {
@@ -166,11 +166,12 @@ export function AuthForm({ isLogin }: Props) {
       {passwordError !== '' && <span className={styles['error-text']}>{passwordError}</span>}
       {!isLogin && signUp.isError && <span className={styles['error-text']}>Account already exists, use another email</span>}
 
-      {isLogin && (
+      {/* {isLogin && (
         <a href="#" className={styles.forgot}>
           Forgot your password?
         </a>
-      )}
+      )} */}
+
       <input
         type="submit"
         value={isLogin ? 'Login' : 'Sign Up'}
