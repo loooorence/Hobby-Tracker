@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from './login.module.css';
+import styles from '../components/Login.module.css';
 import { AuthPanel } from '../components/AuthPanel';
 import { AuthForm } from '../components/AuthForm';
 

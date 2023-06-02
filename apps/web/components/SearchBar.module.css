@@ -1,5 +1,5 @@
-.SearchBar {
-  position: fixed;
+.Searchbar {
+  position: flex;
   top: 4px;
   left: 0;
   right: 0;
@@ -8,8 +8,7 @@
   padding: 10px 0;
 }
 
-
-.SearchBar input[type='text'] {
+.Searchbar input[type='text'] {
   border: none;
   border-radius: 20px;
   background-color: #eeebeb;
@@ -19,7 +18,7 @@
   outline: none;
 }
 
-.search_button {
+.Search_button {
   border: none;
   cursor: pointer;
   background-color: transparent;
@@ -28,16 +27,26 @@
   margin-left: 0.5rem;
   margin-top: 0.1rem;
 }
-.search_button:hover {
+.Search_button:hover {
   color: rgb(40, 78, 64);
 }
-.search-button:focus {
+.Search-button:focus {
   outline: none;
 }
 
-.search-icon {
+.Search-icon {
   margin-left: 6px;
   margin-bottom: -7px;
 }
 
+@media (max-width: 768px) {
+  .Searchbar {
+    position: static; /* make the position static */
+    margin-top: 10px; /* add a margin on top equal to your sidebar's height */
+    padding: 30px;
+  }
 
+  .Searchbar input[type='text'] {
+    width: 70%; /* reduce the width to fit the mobile screen */
+  }
+}

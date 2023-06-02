@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import styles from './SearchBar.module.css';
 
-
-function SearchBar({ onSearch }) {
+function Searchbar({ onSearch }) {
   const [inputValue, setInputValue] = useState('');
 
   /* 
@@ -17,18 +16,18 @@ function SearchBar({ onSearch }) {
 
   // Render the search bar with an input field and a search button
   return (
-    <form className={styles.SearchBar} onSubmit={handleSubmit}>
+    <form className={styles.Searchbar} onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Search"
         value={inputValue}
-        onChange={e => setInputValue(e.target.value)} // Update the input value state when the input changes
+        onChange={(e) => setInputValue(e.target.value)} // Update the input value state when the input changes
       />
-      <button className={styles.search_button} type="submit">
+      <button className={styles.Search_button} type="submit">
         <FaSearch /> {/* the search icon */}
       </button>
     </form>
   );
 }
 
-export default SearchBar;
+export default Searchbar;

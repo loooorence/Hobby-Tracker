@@ -28,11 +28,11 @@ function HomeScreen() {
   };
 
   return (
-    <div className={styles.gridContainer}>
+    <div className={styles.Grid_container}>
       {images.map((img, index) => (
         <div
           key={index}
-          className={styles.gridItem}
+          className={styles.Grid_item}
           onClick={() => openImage(img)}
         >
           <Image src={img.src} width={500} height={500} alt={img.title} />

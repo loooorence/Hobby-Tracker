@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Snowburst+One:400|Sora:400');
 
-.InstanceBackdrop {
+.Instance_backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -15,14 +15,14 @@
   text-align: center;
 }
 
-.logo {
+.Logo {
   font-family: 'Snowburst One';
   font-size: 4rem;
   margin-bottom: -2.5rem;
   text-align: center;
 }
 
-.instance {
+.Instance {
   position: relative;
 
   padding: 1rem;
@@ -34,7 +34,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 1.85);
 }
 
-.instance__title {
+.Instance_title {
   font-size: 2rem;
   background-color: unset;
   border: none;
@@ -43,10 +43,9 @@
   text-align: center;
   font-family: 'Snowburst One';
   outline: none;
-
 }
 
-.instance__fileInput {
+.Instance_file_input {
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
   display: block;
@@ -57,7 +56,7 @@
   margin-bottom: 1rem;
 }
 
-.instance__selectedImage {
+.Instance_selected_image {
   margin-left: auto;
   margin-right: auto;
   align-items: center;
@@ -68,11 +67,10 @@
   height: auto;
   max-height: 15rem;
   margin-bottom: 1rem;
-
   position: static;
 }
 
-.instance__description {
+.Instance_description {
   z-index: 2;
   background-color: white;
   outline: none;
@@ -87,7 +85,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 1.85);
 }
 
-.instance_addDesc {
+.Instance_add_desc {
   z-index: 1;
   display: flex;
   background-color: lightblue;
@@ -104,13 +102,12 @@
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.instance_addDesc:hover {
+.Instance_add_desc:hover {
   background-color: blue;
   color: white;
 }
 
-
-.instance__hideDesc {
+.Instance_hide_desc {
   z-index: 3;
   right: 17.1rem;
   display: flex;
@@ -126,7 +123,7 @@
   cursor: pointer;
 }
 
-.instance__buttonpost {
+.Instance_button_post {
   display: flex;
 
   margin-left: auto;
@@ -142,12 +139,12 @@
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.instance__buttonpost:hover {
+.Instance_button_post:hover {
   background-color: blue;
   color: white;
 }
 
-.instance__Error {
+.Instance_error {
   color: red;
   font-size: 0.9rem;
   font-weight: bold;
@@ -162,60 +159,55 @@
 }
 
 @media (max-width: 768px) {
-  .logo {
+  .Logo {
     font-size: 2.5rem;
   }
-  .instance {
+  .Instance {
     height: 40%;
     width: 65%;
   }
-  .instance__pai {
+  .Instance_pai {
     font-size: 1.5rem;
   }
-  .instance__description {
+  .Instance_description {
     margin-top: 2rem;
     height: 6.5rem;
     width: 15rem;
   }
-  .instance__buttonpost {
-    margin-top: 0.5rem;
+  .Instance_title {
+    font-size: 0.85rem;
   }
-  .instance__title{
-    font-size: .85rem;
+  .Instance_file_input {
+    font-size: 0.5rem;
+    margin-top: 0.6rem;
   }
-  .instance__fileInput{
-    font-size: 0.5rem; 
-    margin-top: .6rem;  
-  }
-  .instance__selectedImage{
+  .Instance_selected_image {
     max-width: 10rem;
     margin-bottom: 0rem;
   }
-  .instance__buttonpost{
+  .Instance_button_post {
+    margin-top: 0.5rem;
     margin-left: auto;
-    font-size: .5rem;
+    font-size: 0.5rem;
     height: 1.5rem;
     text-align: center;
-
   }
-  .instance_addDesc{
+  .Instance_add_desc {
     margin-left: auto;
-    font-size: .5rem;
+    font-size: 0.5rem;
     height: 1.5rem;
   }
-  .instance__Error{
-    font-size: .5rem;
-    margin-top: .65rem;
+  .Instance_error {
+    font-size: 0.5rem;
+    margin-top: 0.65rem;
   }
-  .instance__hideDesc{
+  .Instance_hide_desc {
     margin-top: 3.5rem;
     left: 6.4rem;
-    
   }
-  .instance__description{
+  .Instance_description {
     margin-top: 3.5rem;
     height: 3rem;
     width: 7rem;
   }
-
 }

@@ -1,61 +1,87 @@
-@import url("https://fonts.googleapis.com/css?family=Snowburst+One:400|Sora:400");
+@import url('https://fonts.googleapis.com/css?family=Snowburst+One:400|Sora:400');
 
-
-.flex_row {
-    position: fixed;
-    border-inline-end: solid 2px #d4cfcf;
-    min-height: 100rem;
-    row-gap: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: first baseline;
-    margin-left: 5rem;
+.Flex_row {
+  position: fixed;
+  border-inline-end: solid 2px #d4cfcf;
+  min-height: 100rem;
+  row-gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+  margin-left: 5rem;
 }
 
-.head {
-    display: flex;
-    align-items: center;
-    column-gap: 1rem;
-    margin-inline-end: 2rem;
+.Head {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  margin-inline-end: 2rem;
 }
 
-.hobby_tracker {
-    -webkit-text-stroke: 1.6px rgb(40, 78, 64);
-    color: rgb(40, 78, 64);
-    font-family: 'Snowburst One';
-    font-size: 1.5rem;
-    letter-spacing: 0;
+.Hobby_tracker {
+  -webkit-text-stroke: 1.6px rgb(40, 78, 64);
+  color: rgb(40, 78, 64);
+  font-family: 'Snowburst One';
+  font-size: 1.5rem;
+  letter-spacing: 0;
 }
 
-
-.button {
-    padding: 1em;
-    display: flex;
-    align-items: center;
-    background-color: transparent; 
-    border: none;
-    border-radius: 20px;
-    width: 10rem;
-    height: 2.5rem;
-    padding: 1em 1em;
-    transition-duration: 0.4s;
-    font-size: 1rem;
+.Button {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 20px;
+  width: 10rem;
+  height: 2.5rem;
+  padding: 1em 1em;
+  transition-duration: 0.4s;
+  font-size: 1rem;
 }
 
-.button:hover {
-    background-color: #eeebeb;
+.Button:hover {
+  background-color: #eeebeb;
 }
 
-.span {
-    margin-inline-start: 1em;
-    font-family: system-ui;
-    font-weight: 600;
-    font-size: medium;
-    color: #585757;
-    
+.Span {
+  margin-inline-start: 1em;
+  font-family: system-ui;
+  font-weight: 600;
+  font-size: medium;
+  color: #585757;
 }
 
-.icon {
-    color: #585757;
+.Icon {
+  color: #585757;
 }
 
+@media (max-width: 768px) {
+  .Flex_row {
+    position: static;
+    min-height: auto;
+    margin-left: 1rem;
+    flex-direction: row;
+    justify-content: space-around;
+    border-inline-end: none;
+    border-bottom: solid 2px #d4cfcf;
+  }
+  .Head {
+    margin-inline-end: 1rem;
+  }
+
+  .Hobby_tracker {
+    font-size: 1.2rem;
+  }
+
+  .Button {
+    width: auto;
+    height: auto;
+    padding: 0.8em 0.8em;
+    font-size: 0.8rem;
+  }
+
+  .Span {
+    font-size: small;
+  }
+}
