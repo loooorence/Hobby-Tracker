@@ -5,20 +5,7 @@ function InstanceWindow() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
-  const [showDescription, setShowDescription] = useState(false);
-  const [showHideButton, setShowHideButton] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
-  const startEditingHandler = () => {
-    setShowDescription(true);
-    setShowHideButton(true);
-  };
-
-  const stopEditingHandler = () => {
-    setShowDescription(false);
-    setShowHideButton(false);
-    setDescription('');
-  };
 
   const titleChangeHandler = (event) => {
     setTitle(event.target.value);
@@ -76,37 +63,19 @@ function InstanceWindow() {
             onChange={fileChangeHandler}
             className={styles.instance__fileInput}
           />
+          Select from computer 
         </label>
 
-        {showHideButton && (
-          <button
-            type="button"
-            onClick={stopEditingHandler}
-            className={styles.instance__hideDesc}
-          >
-            X
-          </button>
-        )}
-
         <div className={styles.instance__descriptionContainer}>
-          {showDescription && (
-            <textarea
-              placeholder="Enter a description"
-              value={description}
-              onChange={descriptionChangeHandler}
-              className={styles.instance__description}
-            />
-          )}
+          <textarea
+            placeholder="Enter a description"
+            value={description}
+            onChange={descriptionChangeHandler}
+            className={styles.instance__description}
+          />
+          
 
           <div className={styles.instance__buttonsContainer}>
-            <button
-              type="button"
-              onClick={startEditingHandler}
-              className={styles.instance_addDesc}
-            >
-              Add Description
-            </button>
-
             <button
               type="button"
               onClick={postHandler}
@@ -124,5 +93,4 @@ function InstanceWindow() {
     </div>
   );
 }
-
 export default InstanceWindow;

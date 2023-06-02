@@ -31,13 +31,17 @@
 }
 
 .instance__fileInput {
-  margin-top: 1.5rem;
-  margin-bottom: 2.5rem;
-  display: block;
+  display: none;
 }
 
+.instance__fileLabel {
+  width: 35rem;
+  display: block; 
+  color: rgb(40, 78, 64);
+  font-weight: 550;
+}
 .instance__selectedImage {
-  margin-top: 1rem;
+  margin-top: 0.5rem; 
   display: block;
   width: 35rem;
   height: 30rem;
@@ -48,18 +52,18 @@
 .instance__description {
   border: none;
   z-index: 2;
-  background-color: #d4cfcf;
+  background-color: transparent;
   outline: none;
   resize: none;
-  margin-top: -2.65rem;
-  height: 5.5rem;
+  /* margin-top: 0rem; */
+  height: 5rem;
   width: 15rem;
   position: absolute;
   right: 52%;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
-.instance_addDesc {
+/* .instance_addDesc {
   border: none;
   color: rgb(40, 78, 64);
   z-index: 1;
@@ -72,11 +76,11 @@
   margin-right: auto;
   position: absolute;
 
-}
+} */
 
-.instance_addDesc:hover {
+/* .instance_addDesc:hover {
   color: rgb(21, 40, 33);
-}
+} */
 
 
 /* .instance__hideDesc {
@@ -94,6 +98,7 @@
   position: absolute;
   cursor: pointer;
 } */
+
 
 .instance__buttonpost {
   display: flex;
@@ -123,7 +128,7 @@
   margin-top: 2.15rem;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .logo {
     font-size: 2.5rem;
   }
@@ -180,4 +185,4 @@
     width: 7rem;
   }
 
-} */
+} 
