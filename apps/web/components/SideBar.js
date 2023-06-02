@@ -6,50 +6,37 @@ import userLine from '@iconify/icons-majesticons/user-line';
 import mountainIcon from '@iconify/icons-noto/mountain';
 // npm install --save-dev @iconify/react @iconify/icons-majesticons
 // npm install --save-dev @iconify/react @iconify/icons-noto
-import styles from "./SideBar.module.css"
+import styles from './SideBar.module.css';
 import Link from 'next/link';
 
-function SideBar() {
-
+function Sidebar() {
   return (
-    
-    <nav className={styles.flex_row}>
-
-      <Link href="/" className={styles.head}>
-        <Icon className={styles.logo} icon={mountainIcon} width="55"/>
-        <h1 className={styles.hobby_tracker}>
+    <nav className={styles.Flex_row}>
+      <Link href="/" className={styles.Head}>
+        <Icon className={styles.Logo} icon={mountainIcon} width="55" />
+        <h1 className={styles.Hobby_tracker}>
           Hobby
           <br />
-           Tracker
+          Tracker
         </h1>
       </Link>
-          
-      <Link href="/" className={styles.button}>
-        <Icon className={styles.icon} icon={homeLine} width="25"/>
-        <span className={styles.span}>
-          Explore 
-        </span>
+
+      <Link href="/" className={styles.Button}>
+        <Icon className={styles.Icon} icon={homeLine} width="25" />
+        <span className={styles.Span}>Explore</span>
       </Link>
 
-      <Link href="/HT" className={styles.button}>
-        <Icon className={styles.icon} icon={plusIcon} width="25"/>
-        <span className={styles.span}>
-          Post
-        </span>
+      <Link href="/HT" className={styles.Button}>
+        <Icon className={styles.Icon} icon={plusIcon} width="25" />
+        <span className={styles.Span}>Post</span>
       </Link>
 
-      <Link href="/login" className={styles.button}>
-        <Icon className={styles.icon} icon={userLine} width="25"/>
-        <span className={styles.span}>
-          Me
-        </span>
+      <Link href="/login" className={styles.Button}>
+        <Icon className={styles.Icon} icon={userLine} width="25" />
+        <span className={styles.Span}>Me</span>
       </Link>
-
     </nav>
-
   );
 }
 
-
-export default SideBar;
-  
+export default Sidebar;

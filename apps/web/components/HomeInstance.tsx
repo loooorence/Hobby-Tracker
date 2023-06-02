@@ -16,8 +16,8 @@ const HomeInstance = () => {
   // console.log(dataUsers);
 
   return (
-    <div className={styles.instance}>
-      <div className={styles.instance_top_text}>{word}</div>
+    <div className={styles.Instance}>
+      <div className={styles.Instance_top_text}>{word}</div>
     </div>
   );
 };
