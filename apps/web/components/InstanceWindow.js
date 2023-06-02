@@ -48,7 +48,7 @@ function InstanceWindow() {
   };
 
   return (
-    <div className={styles.Instance_Backdrop}>
+    <div className={styles.Instance_backdrop}>
       <h1 className={styles.Logo}>Hobby Tracker</h1>
       <div className={styles.Instance}>
         <input
@@ -63,17 +63,17 @@ function InstanceWindow() {
           <img
             src={URL.createObjectURL(selectedFile)}
             alt="Selected"
-            className={styles.Instance_selectedImage}
+            className={styles.Instance_selected_image}
           />
         )}
 
-        <label htmlFor="fileInput" className={styles.Instance_fileLabel}>
+        <label htmlFor="fileInput" className={styles.Instance_file_label}>
           <input
             id="fileInput"
             type="file"
             accept="image/*"
             onChange={fileChangeHandler}
-            className={styles.Instance_fileInput}
+            className={styles.Instance_file_input}
           />
         </label>
 
@@ -81,7 +81,7 @@ function InstanceWindow() {
           <button
             type="button"
             onClick={stopEditingHandler}
-            className={styles.Instance_hideDesc}
+            className={styles.Instance_hide_desc}
           >
             X
           </button>
@@ -101,7 +101,7 @@ function InstanceWindow() {
             <button
               type="button"
               onClick={startEditingHandler}
-              className={styles.Instance_addDesc}
+              className={styles.Instance_add_desc}
             >
               Add Description
             </button>
@@ -109,7 +109,7 @@ function InstanceWindow() {
             <button
               type="button"
               onClick={postHandler}
-              className={styles.Instance_buttonpost}
+              className={styles.Instance_button_post}
             >
               Post
             </button>
@@ -117,7 +117,7 @@ function InstanceWindow() {
         </div>
 
         {errorMessage && (
-          <div className={styles.Instance_Error}>{errorMessage}</div>
+          <div className={styles.Instance_error}>{errorMessage}</div>
         )}
       </div>
     </div>

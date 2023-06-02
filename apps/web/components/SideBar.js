@@ -26,7 +26,7 @@ function Sidebar() {
         <span className={styles.Span}>Explore</span>
       </Link>
 
-      <Link href="/HT" className={styles.Button}>
+      <Link href="/ht" className={styles.Button}>
         <Icon className={styles.Icon} icon={plusIcon} width="25" />
         <span className={styles.Span}>Post</span>
       </Link>

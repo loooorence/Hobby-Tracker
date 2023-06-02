@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Snowburst+One:400|Sora:400');
 
-.Instance_Backdrop {
+.Instance_backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -34,7 +34,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 1.85);
 }
 
-.Instance__title {
+.Instance_title {
   font-size: 2rem;
   background-color: unset;
   border: none;
@@ -45,7 +45,7 @@
   outline: none;
 }
 
-.Instance__fileInput {
+.Instance_file_input {
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
   display: block;
@@ -56,7 +56,7 @@
   margin-bottom: 1rem;
 }
 
-.Instance__selectedImage {
+.Instance_selected_image {
   margin-left: auto;
   margin-right: auto;
   align-items: center;
@@ -67,11 +67,10 @@
   height: auto;
   max-height: 15rem;
   margin-bottom: 1rem;
-
   position: static;
 }
 
-.Instance__description {
+.Instance_description {
   z-index: 2;
   background-color: white;
   outline: none;
@@ -86,7 +85,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 1.85);
 }
 
-.Instance_addDesc {
+.Instance_add_desc {
   z-index: 1;
   display: flex;
   background-color: lightblue;
@@ -103,12 +102,12 @@
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.Instance_addDesc:hover {
+.Instance_add_desc:hover {
   background-color: blue;
   color: white;
 }
 
-.Instance__hideDesc {
+.Instance_hide_desc {
   z-index: 3;
   right: 17.1rem;
   display: flex;
@@ -124,7 +123,7 @@
   cursor: pointer;
 }
 
-.Instance__buttonpost {
+.Instance_button_post {
   display: flex;
 
   margin-left: auto;
@@ -140,12 +139,12 @@
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.Instance__buttonpost:hover {
+.Instance_button_post:hover {
   background-color: blue;
   color: white;
 }
 
-.Instance__Error {
+.Instance_error {
   color: red;
   font-size: 0.9rem;
   font-weight: bold;
@@ -167,48 +166,46 @@
     height: 40%;
     width: 65%;
   }
-  .Instance__pai {
+  .Instance_pai {
     font-size: 1.5rem;
   }
-  .Instance__description {
+  .Instance_description {
     margin-top: 2rem;
     height: 6.5rem;
     width: 15rem;
   }
-  .Instance__buttonpost {
-    margin-top: 0.5rem;
-  }
-  .Instance__title {
+  .Instance_title {
     font-size: 0.85rem;
   }
-  .Instance__fileInput {
+  .Instance_file_input {
     font-size: 0.5rem;
     margin-top: 0.6rem;
   }
-  .Instance__selectedImage {
+  .Instance_selected_image {
     max-width: 10rem;
     margin-bottom: 0rem;
   }
-  .Instance__buttonpost {
+  .Instance_button_post {
+    margin-top: 0.5rem;
     margin-left: auto;
     font-size: 0.5rem;
     height: 1.5rem;
     text-align: center;
   }
-  .Instance_addDesc {
+  .Instance_add_desc {
     margin-left: auto;
     font-size: 0.5rem;
     height: 1.5rem;
   }
-  .Instance__Error {
+  .Instance_error {
     font-size: 0.5rem;
     margin-top: 0.65rem;
   }
-  .Instance__hideDesc {
+  .Instance_hide_desc {
     margin-top: 3.5rem;
     left: 6.4rem;
   }
-  .Instance__description {
+  .Instance_description {
     margin-top: 3.5rem;
     height: 3rem;
     width: 7rem;
