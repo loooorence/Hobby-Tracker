@@ -46,16 +46,24 @@ function InstanceWindow() {
           placeholder="Title"
         />
 
-        {selectedFile && (
+        {/* {selectedFile && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={URL.createObjectURL(selectedFile)}
             alt="Selected"
             className={styles.instance__selectedImage}
           />
-        )}
+        )} */}
 
-        <label htmlFor="fileInput" className={styles.instance__fileLabel}>
+
+        <div className={styles.instance__descriptionContainer}>
+          {/* <textarea
+            placeholder="Enter a description"
+            value={description}
+            onChange={descriptionChangeHandler}
+            className={styles.instance__description}
+          /> */}
+          <label htmlFor="fileInput" className={styles.instance__fileLabel}>
           <input
             id="fileInput"
             type="file"
@@ -63,17 +71,8 @@ function InstanceWindow() {
             onChange={fileChangeHandler}
             className={styles.instance__fileInput}
           />
-          Select from computer 
+          Upload
         </label>
-
-        <div className={styles.instance__descriptionContainer}>
-          <textarea
-            placeholder="Enter a description"
-            value={description}
-            onChange={descriptionChangeHandler}
-            className={styles.instance__description}
-          />
-          
 
           <div className={styles.instance__buttonsContainer}>
             <button
@@ -84,12 +83,32 @@ function InstanceWindow() {
               Post
             </button>
           </div>
+
         </div>
 
+        {/* {errorMessage && (
+          <div className={styles.instance__Error}>{errorMessage}</div>
+        )} */}
+
+        {selectedFile && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={URL.createObjectURL(selectedFile)}
+            alt="Selected"
+            className={styles.instance__selectedImage}
+          />
+        )}  
+        <textarea
+            placeholder="Enter a description"
+            value={description}
+            onChange={descriptionChangeHandler}
+            className={styles.instance__description}
+        />
         {errorMessage && (
           <div className={styles.instance__Error}>{errorMessage}</div>
         )}
       </div>
+
     </div>
   );
 }
