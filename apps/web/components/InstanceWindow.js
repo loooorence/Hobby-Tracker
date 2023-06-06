@@ -151,9 +151,9 @@ function InstanceWindow() {
   // Implementing all parts together.
   return (
     <div className={styles.Instance_backdrop}>
-      <h1 className={styles.Logo}>Hobby Tracker</h1>
+      {/* <h1 className={styles.Logo}>Post an Instance here!</h1> */}
       <div className={styles.Instance}>
-        <h2 className={styles.Instance_title}>Post Your Hobby</h2>
+
 
         {selectedFile && (
           <img
