@@ -55,3 +55,24 @@ const SignUp = gql`
     }
   }
 `;
+
+const CREATE_POST = gql`
+  mutation CreatePost($title: String!, $description: String!, $authorId: String!) {
+    createPost(data:{
+      title: $title,
+      description: $description,
+      author: {
+        connect: { id: $authorId }
+      }
+    }) {
+      id
+      title
+      description
+      author {
+        id
+        email
+        name
+      }
+    }
+  }
+`;
