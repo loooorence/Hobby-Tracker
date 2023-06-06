@@ -49,14 +49,14 @@ function InstanceWindow() {
 
   return (
     <div className={styles.Instance_backdrop}>
-      <h1 className={styles.Logo}>Hobby Tracker</h1>
+      {/* <h1 className={styles.Logo}>Post an Instance here!</h1> */}
       <div className={styles.Instance}>
         <input
           type="text"
           value={title}
           onChange={titleChangeHandler}
           className={styles.Instance_title}
-          placeholder="Enter Instance Title"
+          placeholder="Instance Title"
         />
 
         {selectedFile && (
