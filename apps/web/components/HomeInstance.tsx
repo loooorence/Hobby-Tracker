@@ -13,12 +13,12 @@ const HomeInstance = () => {
   const postImages = dataPosts?.posts.reverse().map((post) => (
     <div key={post.id} className={styles.Instance}>
       <div className={styles.Instance_top_text}>{word}</div>
-      <Image
+      <img
         className={styles.Image_posts}
         src={post.title}
         alt="Image"
-        width={128}
-        height={128}
+        // width={1200}
+        // height={1200}
       />
       <div className={styles.Post_description}>{post.description}</div>
     </div>
