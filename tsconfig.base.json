@@ -25,6 +25,7 @@
       "@hobby-tracker/data-access-graphql": [
         "libs/data-access-graphql/src/index.ts"
       ],
+      "@hobby-tracker/feature-label": ["libs/feature-label/src/index.ts"],
       "@hobby-tracker/hobby-tracker/feature-user": [
         "libs/hobby-tracker/feature-user/src/index.ts"
       ]

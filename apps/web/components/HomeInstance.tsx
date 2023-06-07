@@ -24,6 +24,9 @@ const HomeInstance = () => {
         // height={1200}
       />
       <div>Author: {post.author.name}</div>
+      {post.Label && post.Label[0] ? (
+        <div>Label: {post.Label[0]?.name}</div>
+      ) : null}
       <div className={styles.Post_description}>{post.description}</div>
     </div>
   ));

@@ -32,6 +32,12 @@ export type LabelCountAggregate = {
   name: Scalars['Int'];
 };
 
+export type LabelCreateInput = {
+  Post?: InputMaybe<PostCreateNestedManyWithoutLabelInput>;
+  id?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+};
+
 export type LabelCreateNestedManyWithoutPostInput = {
   connect?: InputMaybe<Array<LabelWhereUniqueInput>>;
   connectOrCreate?: InputMaybe<Array<LabelCreateOrConnectWithoutPostInput>>;
@@ -126,6 +132,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   Login: LoginResponse;
   SignUp: LoginResponse;
+  createLabel: Label;
   createPost: Post;
   createUser: User;
   removePost: Post;
@@ -142,6 +149,11 @@ export type MutationLoginArgs = {
 
 export type MutationSignUpArgs = {
   signUpInput: SignUpUserInput;
+};
+
+
+export type MutationCreateLabelArgs = {
+  data: LabelCreateInput;
 };
 
 
@@ -227,13 +239,31 @@ export type PostCreateNestedManyWithoutAuthorInput = {
   createMany?: InputMaybe<PostCreateManyAuthorInputEnvelope>;
 };
 
+export type PostCreateNestedManyWithoutLabelInput = {
+  connect?: InputMaybe<Array<PostWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<PostCreateOrConnectWithoutLabelInput>>;
+  create?: InputMaybe<Array<PostCreateWithoutLabelInput>>;
+};
+
 export type PostCreateOrConnectWithoutAuthorInput = {
   create: PostCreateWithoutAuthorInput;
   where: PostWhereUniqueInput;
 };
 
+export type PostCreateOrConnectWithoutLabelInput = {
+  create: PostCreateWithoutLabelInput;
+  where: PostWhereUniqueInput;
+};
+
 export type PostCreateWithoutAuthorInput = {
   Label?: InputMaybe<LabelCreateNestedManyWithoutPostInput>;
+  description: Scalars['String'];
+  id?: InputMaybe<Scalars['String']>;
+  title: Scalars['String'];
+};
+
+export type PostCreateWithoutLabelInput = {
+  author: UserCreateNestedOneWithoutPostsInput;
   description: Scalars['String'];
   id?: InputMaybe<Scalars['String']>;
   title: Scalars['String'];
@@ -322,6 +352,7 @@ export type PostWhereUniqueInput = {
 
 export type Query = {
   __typename?: 'Query';
+  labels: Array<Label>;
   post: Post;
   posts: Array<Post>;
   user: User;

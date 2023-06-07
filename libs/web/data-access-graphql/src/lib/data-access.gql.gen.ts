@@ -11,7 +11,7 @@ export type GetUsers = { __typename?: 'Query', users: Array<{ __typename?: 'User
 export type GetPostsVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetPosts = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, description: string, authorId: string, author: { __typename?: 'User', name?: string | null } }> };
+export type GetPosts = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, description: string, authorId: string, author: { __typename?: 'User', name?: string | null }, Label?: Array<{ __typename?: 'Label', name: string }> | null }> };
 
 export type CreateUserVariables = Types.Exact<{
   password: Types.Scalars['String'];
@@ -40,6 +40,7 @@ export type CreatePostVariables = Types.Exact<{
   title: Types.Scalars['String'];
   description: Types.Scalars['String'];
   authorId: Types.Scalars['String'];
+  labelId: Types.Scalars['String'];
 }>;
 
 
@@ -51,6 +52,18 @@ export type GetUserVariables = Types.Exact<{
 
 
 export type GetUser = { __typename?: 'Query', user: { __typename?: 'User', name?: string | null } };
+
+export type CreateLabelVariables = Types.Exact<{
+  labelInput: Types.LabelCreateInput;
+}>;
+
+
+export type CreateLabel = { __typename?: 'Mutation', createLabel: { __typename?: 'Label', name: string, id: string } };
+
+export type GetLabelsVariables = Types.Exact<{ [key: string]: never; }>;
+
+
+export type GetLabels = { __typename?: 'Query', labels: Array<{ __typename?: 'Label', id: string, name: string }> };
 
 
 export const GetUsersDocument = /*#__PURE__*/ gql`
@@ -70,6 +83,9 @@ export const GetPostsDocument = /*#__PURE__*/ gql`
     description
     authorId
     author {
+      name
+    }
+    Label {
       name
     }
   }
@@ -109,9 +125,9 @@ export const SignUpDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CreatePostDocument = /*#__PURE__*/ gql`
-    mutation CreatePost($title: String!, $description: String!, $authorId: String!) {
+    mutation CreatePost($title: String!, $description: String!, $authorId: String!, $labelId: String!) {
   createPost(
-    data: {title: $title, description: $description, author: {connect: {id: $authorId}}}
+    data: {title: $title, description: $description, author: {connect: {id: $authorId}}, Label: {connect: {id: $labelId}}}
   ) {
     id
     title
@@ -127,6 +143,22 @@ export const CreatePostDocument = /*#__PURE__*/ gql`
 export const GetUserDocument = /*#__PURE__*/ gql`
     query GetUser($userInput: UserWhereUniqueInput!) {
   user(where: $userInput) {
+    name
+  }
+}
+    `;
+export const CreateLabelDocument = /*#__PURE__*/ gql`
+    mutation CreateLabel($labelInput: LabelCreateInput!) {
+  createLabel(data: $labelInput) {
+    name
+    id
+  }
+}
+    `;
+export const GetLabelsDocument = /*#__PURE__*/ gql`
+    query GetLabels {
+  labels {
+    id
     name
   }
 }
@@ -159,6 +191,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetUser(variables: GetUserVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetUser> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetUser>(GetUserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetUser', 'query');
+    },
+    CreateLabel(variables: CreateLabelVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateLabel> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreateLabel>(CreateLabelDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CreateLabel', 'mutation');
+    },
+    GetLabels(variables?: GetLabelsVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetLabels> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetLabels>(GetLabelsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetLabels', 'query');
     }
   };
 }

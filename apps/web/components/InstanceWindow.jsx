@@ -4,6 +4,8 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import { gql } from '../data-access/graphql-client';
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/Auth.context';
+import data from '@iconify/icons-majesticons/home-line';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 function InstanceWindow() {
   // State variables, setting to empty, null or false
@@ -13,6 +15,8 @@ function InstanceWindow() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [showDescription, setShowDescription] = useState(false);
   const [showHideButton, setShowHideButton] = useState(false);
+  const [selectedLabel, setSelectedLabel] = useState('');
+  const [selectedLabelId, setSelectedLabelId] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const routingURLRef = useRef('/');
 
@@ -21,13 +25,18 @@ function InstanceWindow() {
 
   const { user } = useAuth();
 
+  const { isLoading: isLoadingLabels, data: dataLabels } = useQuery({
+    queryKey: ['Labels'],
+    queryFn: () => gql.GetLabels(),
+  });
+
   // Query to load posts from database
   const {
     isLoading: isLoadingPosts,
     error: errorPosts,
     data: dataPosts,
   } = useQuery({
-    queryKey: ['Posts}'],
+    queryKey: ['Posts'],
     queryFn: () => gql.GetPosts(),
   });
 
@@ -38,6 +47,7 @@ function InstanceWindow() {
         title: data.title,
         description: data.description,
         authorId: user.id,
+        labelId: selectedLabelId,
       });
 
       // To catch any errors when creating a post
@@ -152,6 +162,14 @@ function InstanceWindow() {
     }
   };
 
+  const handleChange = (e) => {
+    setSelectedLabel(e.target.value);
+  };
+
+  if (isLoadingLabels || isLoadingPosts) {
+    return <div>Loading...</div>;
+  }
+
   // Implementing all parts together.
   return (
     <div className={styles.Instance_backdrop}>
@@ -196,23 +214,43 @@ function InstanceWindow() {
             />
           )}
 
-          <div className={styles.instance_buttonsContainer}>
-            <button
-              type="button"
-              onClick={startEditingHandler}
-              className={styles.Instance_add_desc}
-            >
-              Add Description
-            </button>
+          <button
+            type="button"
+            onClick={startEditingHandler}
+            className={styles.Instance_add_desc}
+          >
+            Add Description
+          </button>
 
-            <button
-              type="button"
-              onClick={postHandler}
-              className={styles.Instance_button_post}
+          <button
+            type="button"
+            onClick={postHandler}
+            className={styles.Instance_button_post}
+          >
+            Post
+          </button>
+          <FormControl sx={{ m: 1, minWidth: 80 }} margin="dense">
+            <InputLabel id="demo-simple-select-label">Label</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={selectedLabel}
+              label="Label"
+              onChange={handleChange}
             >
-              Post
-            </button>
-          </div>
+              {!isLoadingLabels
+                ? dataLabels?.labels.map((label, i) => (
+                    <MenuItem
+                      value={label.name}
+                      key={i}
+                      onClick={() => setSelectedLabelId(label.id)}
+                    >
+                      {label.name}
+                    </MenuItem>
+                  ))
+                : null}
+            </Select>
+          </FormControl>
         </div>
 
         {errorMessage && (
