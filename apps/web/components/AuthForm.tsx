@@ -4,6 +4,8 @@ import { FormEvent, useEffect, useState } from 'react';
 import { gql } from '../data-access/graphql-client';
 import styles from './AuthForm.module.css';
 import { Icon } from '@iconify/react';
+import { useAuthDispath } from '../context/Auth.context';
+import { User } from '../context/Auth.types';
 
 type Props = {
   isLogin: boolean;
@@ -17,12 +19,21 @@ export function AuthForm({ isLogin }: Props) {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const router = useRouter();
-  
+  const dispatch = useAuthDispath();
+
   const login = useMutation({
     mutationKey: ['Login'],
     mutationFn: async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      return await gql.Login({ input: { email, password } });
+      const response = await gql.Login({ input: { email, password } });
+      if (
+        response.Login.user.email &&
+        response.Login.user.name &&
+        response.Login.user.id
+      ) {
+        dispatch({ type: 'SET_USER', payload: response.Login.user as User });
+        dispatch({ type: 'LOG_IN' });
+      }
     },
     onSuccess: () => {
       router.push('/');
@@ -47,17 +58,17 @@ export function AuthForm({ isLogin }: Props) {
       return;
     }
     if (name.length < 3) {
-      setNameError("Name too short");
+      setNameError('Name too short');
       return;
     }
     if (name.length > 100) {
-      setNameError("Name too long");
+      setNameError('Name too long');
       return;
     }
     // valid name so don't set any error text
     setNameError('');
   }, [name]);
-  // email form validation 
+  // email form validation
   useEffect(() => {
     // simplified regex for basic email checking
     // https://stackoverflow.com/a/9204568
@@ -76,11 +87,11 @@ export function AuthForm({ isLogin }: Props) {
       return;
     }
     if (password.length < 8) {
-      setPasswordError("Password too short");
+      setPasswordError('Password too short');
       return;
     }
     if (password.length > 100) {
-      setPasswordError("Password too long");
+      setPasswordError('Password too long');
       return;
     }
     // valid password so don't set any error text
@@ -125,7 +136,9 @@ export function AuthForm({ isLogin }: Props) {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          {nameError !== '' && (<span className={styles['error-text']}>{nameError}</span>)}
+          {nameError !== '' && (
+            <span className={styles['error-text']}>{nameError}</span>
+          )}
         </>
       )}
 
@@ -145,7 +158,9 @@ export function AuthForm({ isLogin }: Props) {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      {emailError !== '' && <span className={styles['error-text']}>{emailError}</span>}
+      {emailError !== '' && (
+        <span className={styles['error-text']}>{emailError}</span>
+      )}
 
       <div
         className={
@@ -163,8 +178,14 @@ export function AuthForm({ isLogin }: Props) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      {passwordError !== '' && <span className={styles['error-text']}>{passwordError}</span>}
-      {!isLogin && signUp.isError && <span className={styles['error-text']}>Account already exists, use another email</span>}
+      {passwordError !== '' && (
+        <span className={styles['error-text']}>{passwordError}</span>
+      )}
+      {!isLogin && signUp.isError && (
+        <span className={styles['error-text']}>
+          Account already exists, use another email
+        </span>
+      )}
 
       {/* {isLogin && (
         <a href="#" className={styles.forgot}>
@@ -176,7 +197,11 @@ export function AuthForm({ isLogin }: Props) {
         type="submit"
         value={isLogin ? 'Login' : 'Sign Up'}
         className={styles.submit}
-        disabled={!isLogin ? nameError !== '' || emailError !== '' || passwordError !== '' : emailError !== '' || passwordError !== ''}
+        disabled={
+          !isLogin
+            ? nameError !== '' || emailError !== '' || passwordError !== ''
+            : emailError !== '' || passwordError !== ''
+        }
       ></input>
     </form>
   );

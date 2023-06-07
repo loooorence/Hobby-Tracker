@@ -27,7 +27,7 @@ export type LoginVariables = Types.Exact<{
 }>;
 
 
-export type Login = { __typename?: 'Mutation', Login: { __typename?: 'LoginResponse', access_token: string, user: { __typename?: 'User', email: string, name?: string | null } } };
+export type Login = { __typename?: 'Mutation', Login: { __typename?: 'LoginResponse', access_token: string, user: { __typename?: 'User', email: string, name?: string | null, id: string } } };
 
 export type SignUpVariables = Types.Exact<{
   input: Types.SignUpUserInput;
@@ -35,6 +35,15 @@ export type SignUpVariables = Types.Exact<{
 
 
 export type SignUp = { __typename?: 'Mutation', SignUp: { __typename?: 'LoginResponse', access_token: string, user: { __typename?: 'User', email: string, name?: string | null, id: string } } };
+
+export type CreatePostVariables = Types.Exact<{
+  title: Types.Scalars['String'];
+  description: Types.Scalars['String'];
+  authorId: Types.Scalars['String'];
+}>;
+
+
+export type CreatePost = { __typename?: 'Mutation', createPost: { __typename?: 'Post', id: string, title: string, description: string, author: { __typename?: 'User', id: string, email: string, name?: string | null } } };
 
 
 export const GetUsersDocument = /*#__PURE__*/ gql`
@@ -71,6 +80,7 @@ export const LoginDocument = /*#__PURE__*/ gql`
     user {
       email
       name
+      id
     }
     access_token
   }
@@ -85,6 +95,22 @@ export const SignUpDocument = /*#__PURE__*/ gql`
       id
     }
     access_token
+  }
+}
+    `;
+export const CreatePostDocument = /*#__PURE__*/ gql`
+    mutation CreatePost($title: String!, $description: String!, $authorId: String!) {
+  createPost(
+    data: {title: $title, description: $description, author: {connect: {id: $authorId}}}
+  ) {
+    id
+    title
+    description
+    author {
+      id
+      email
+      name
+    }
   }
 }
     `;
@@ -110,6 +136,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     SignUp(variables: SignUpVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SignUp> {
       return withWrapper((wrappedRequestHeaders) => client.request<SignUp>(SignUpDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'SignUp', 'mutation');
+    },
+    CreatePost(variables: CreatePostVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreatePost> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreatePost>(CreatePostDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CreatePost', 'mutation');
     }
   };
 }
