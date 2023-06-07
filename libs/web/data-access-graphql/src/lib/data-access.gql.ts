@@ -20,6 +20,9 @@ const GET_POSTS = gql`
       author {
         name
       }
+      Label {
+        name
+      }
     }
   }
 `;
@@ -65,12 +68,14 @@ const CREATE_POST = gql`
     $title: String!
     $description: String!
     $authorId: String!
+    $labelId: String!
   ) {
     createPost(
       data: {
         title: $title
         description: $description
         author: { connect: { id: $authorId } }
+        Label: { connect: { id: $labelId } }
       }
     ) {
       id
@@ -88,6 +93,24 @@ const CREATE_POST = gql`
 const GET_USER = gql`
   query GetUser($userInput: UserWhereUniqueInput!) {
     user(where: $userInput) {
+      name
+    }
+  }
+`;
+
+const CREATE_LABEL = gql`
+  mutation CreateLabel($labelInput: LabelCreateInput!) {
+    createLabel(data: $labelInput) {
+      name
+      id
+    }
+  }
+`;
+
+const GET_LABELS = gql`
+  query GetLabels {
+    labels {
+      id
       name
     }
   }

@@ -7,6 +7,7 @@ import * as path from 'path';
 import { APP_PIPE } from '@nestjs/core';
 import { AuthModule } from '../../../../libs/api/auth/src';
 import { ConfigModule } from '@nestjs/config';
+import { LabelModule } from '../../../../libs/api/feature-label/src';
 
 const validationProvider = {
   provide: APP_PIPE,
@@ -24,6 +25,7 @@ const validationProvider = {
     UserModule,
     PostModule,
     AuthModule,
+    LabelModule,
   ],
   providers: [validationProvider],
 })
