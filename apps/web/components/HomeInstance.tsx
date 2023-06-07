@@ -1,14 +1,17 @@
 import styles from './HomeInstance.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { gql } from '../data-access/graphql-client';
-import Image from 'next/image';
 
 const HomeInstance = () => {
   const word = /* 'Most Recent  */ 'Post';
-  const { data: dataPosts } = useQuery({
-    queryKey: ['Posts}'],
+  const { data: dataPosts, isLoading } = useQuery({
+    queryKey: ['Posts'],
     queryFn: () => gql.GetPosts(),
   });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   const postImages = dataPosts?.posts.reverse().map((post) => (
     <div key={post.id} className={styles.Instance}>
@@ -20,6 +23,7 @@ const HomeInstance = () => {
         // width={1200}
         // height={1200}
       />
+      <div>Author: {post.author.name}</div>
       <div className={styles.Post_description}>{post.description}</div>
     </div>
   ));

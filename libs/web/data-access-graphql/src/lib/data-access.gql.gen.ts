@@ -11,7 +11,7 @@ export type GetUsers = { __typename?: 'Query', users: Array<{ __typename?: 'User
 export type GetPostsVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetPosts = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, description: string, authorId: string }> };
+export type GetPosts = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, description: string, authorId: string, author: { __typename?: 'User', name?: string | null } }> };
 
 export type CreateUserVariables = Types.Exact<{
   password: Types.Scalars['String'];
@@ -45,6 +45,13 @@ export type CreatePostVariables = Types.Exact<{
 
 export type CreatePost = { __typename?: 'Mutation', createPost: { __typename?: 'Post', id: string, title: string, description: string, author: { __typename?: 'User', id: string, email: string, name?: string | null } } };
 
+export type GetUserVariables = Types.Exact<{
+  userInput: Types.UserWhereUniqueInput;
+}>;
+
+
+export type GetUser = { __typename?: 'Query', user: { __typename?: 'User', name?: string | null } };
+
 
 export const GetUsersDocument = /*#__PURE__*/ gql`
     query GetUsers {
@@ -62,6 +69,9 @@ export const GetPostsDocument = /*#__PURE__*/ gql`
     title
     description
     authorId
+    author {
+      name
+    }
   }
 }
     `;
@@ -114,6 +124,13 @@ export const CreatePostDocument = /*#__PURE__*/ gql`
   }
 }
     `;
+export const GetUserDocument = /*#__PURE__*/ gql`
+    query GetUser($userInput: UserWhereUniqueInput!) {
+  user(where: $userInput) {
+    name
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -139,6 +156,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     CreatePost(variables: CreatePostVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreatePost> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreatePost>(CreatePostDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CreatePost', 'mutation');
+    },
+    GetUser(variables: GetUserVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetUser> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetUser>(GetUserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetUser', 'query');
     }
   };
 }

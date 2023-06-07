@@ -40,11 +40,654 @@ export enum PostScalarFieldEnum {
     authorId = "authorId"
 }
 
+export enum LabelScalarFieldEnum {
+    id = "id",
+    name = "name"
+}
+
+registerEnumType(LabelScalarFieldEnum, { name: 'LabelScalarFieldEnum', description: undefined })
 registerEnumType(PostScalarFieldEnum, { name: 'PostScalarFieldEnum', description: undefined })
 registerEnumType(QueryMode, { name: 'QueryMode', description: undefined })
 registerEnumType(SortOrder, { name: 'SortOrder', description: undefined })
 registerEnumType(TransactionIsolationLevel, { name: 'TransactionIsolationLevel', description: undefined })
 registerEnumType(UserScalarFieldEnum, { name: 'UserScalarFieldEnum', description: undefined })
+
+@ObjectType()
+export class AggregateLabel {
+    @Field(() => LabelCountAggregate, {nullable:true})
+    _count?: InstanceType<typeof LabelCountAggregate>;
+    @Field(() => LabelMinAggregate, {nullable:true})
+    _min?: InstanceType<typeof LabelMinAggregate>;
+    @Field(() => LabelMaxAggregate, {nullable:true})
+    _max?: InstanceType<typeof LabelMaxAggregate>;
+}
+
+@ArgsType()
+export class CreateManyLabelArgs {
+    @Field(() => [LabelCreateManyInput], {nullable:false})
+    @Type(() => LabelCreateManyInput)
+    @ValidateNested()
+    data!: Array<LabelCreateManyInput>;
+    @Field(() => Boolean, {nullable:true})
+    skipDuplicates?: boolean;
+}
+
+@ArgsType()
+export class CreateOneLabelArgs {
+    @Field(() => LabelCreateInput, {nullable:false})
+    @Type(() => LabelCreateInput)
+    @ValidateNested()
+    data!: InstanceType<typeof LabelCreateInput>;
+}
+
+@ArgsType()
+export class DeleteManyLabelArgs {
+    @Field(() => LabelWhereInput, {nullable:true})
+    @Type(() => LabelWhereInput)
+    @ValidateNested()
+    where?: InstanceType<typeof LabelWhereInput>;
+}
+
+@ArgsType()
+export class DeleteOneLabelArgs {
+    @Field(() => LabelWhereUniqueInput, {nullable:false})
+    @Type(() => LabelWhereUniqueInput)
+    @ValidateNested()
+    where!: InstanceType<typeof LabelWhereUniqueInput>;
+}
+
+@ArgsType()
+export class FindFirstLabelOrThrowArgs {
+    @Field(() => LabelWhereInput, {nullable:true})
+    @Type(() => LabelWhereInput)
+    @ValidateNested()
+    where?: InstanceType<typeof LabelWhereInput>;
+    @Field(() => [LabelOrderByWithRelationInput], {nullable:true})
+    orderBy?: Array<LabelOrderByWithRelationInput>;
+    @Field(() => LabelWhereUniqueInput, {nullable:true})
+    cursor?: InstanceType<typeof LabelWhereUniqueInput>;
+    @Field(() => Int, {nullable:true})
+    take?: number;
+    @Field(() => Int, {nullable:true})
+    skip?: number;
+    @Field(() => [LabelScalarFieldEnum], {nullable:true})
+    distinct?: Array<keyof typeof LabelScalarFieldEnum>;
+}
+
+@ArgsType()
+export class FindFirstLabelArgs {
+    @Field(() => LabelWhereInput, {nullable:true})
+    @Type(() => LabelWhereInput)
+    @ValidateNested()
+    where?: InstanceType<typeof LabelWhereInput>;
+    @Field(() => [LabelOrderByWithRelationInput], {nullable:true})
+    orderBy?: Array<LabelOrderByWithRelationInput>;
+    @Field(() => LabelWhereUniqueInput, {nullable:true})
+    cursor?: InstanceType<typeof LabelWhereUniqueInput>;
+    @Field(() => Int, {nullable:true})
+    take?: number;
+    @Field(() => Int, {nullable:true})
+    skip?: number;
+    @Field(() => [LabelScalarFieldEnum], {nullable:true})
+    distinct?: Array<keyof typeof LabelScalarFieldEnum>;
+}
+
+@ArgsType()
+export class FindManyLabelArgs {
+    @Field(() => LabelWhereInput, {nullable:true})
+    @Type(() => LabelWhereInput)
+    @ValidateNested()
+    where?: InstanceType<typeof LabelWhereInput>;
+    @Field(() => [LabelOrderByWithRelationInput], {nullable:true})
+    orderBy?: Array<LabelOrderByWithRelationInput>;
+    @Field(() => LabelWhereUniqueInput, {nullable:true})
+    cursor?: InstanceType<typeof LabelWhereUniqueInput>;
+    @Field(() => Int, {nullable:true})
+    take?: number;
+    @Field(() => Int, {nullable:true})
+    skip?: number;
+    @Field(() => [LabelScalarFieldEnum], {nullable:true})
+    distinct?: Array<keyof typeof LabelScalarFieldEnum>;
+}
+
+@ArgsType()
+export class FindUniqueLabelOrThrowArgs {
+    @Field(() => LabelWhereUniqueInput, {nullable:false})
+    @Type(() => LabelWhereUniqueInput)
+    @ValidateNested()
+    where!: InstanceType<typeof LabelWhereUniqueInput>;
+}
+
+@ArgsType()
+export class FindUniqueLabelArgs {
+    @Field(() => LabelWhereUniqueInput, {nullable:false})
+    @Type(() => LabelWhereUniqueInput)
+    @ValidateNested()
+    where!: InstanceType<typeof LabelWhereUniqueInput>;
+}
+
+@ArgsType()
+export class LabelAggregateArgs {
+    @Field(() => LabelWhereInput, {nullable:true})
+    @Type(() => LabelWhereInput)
+    @ValidateNested()
+    where?: InstanceType<typeof LabelWhereInput>;
+    @Field(() => [LabelOrderByWithRelationInput], {nullable:true})
+    orderBy?: Array<LabelOrderByWithRelationInput>;
+    @Field(() => LabelWhereUniqueInput, {nullable:true})
+    cursor?: InstanceType<typeof LabelWhereUniqueInput>;
+    @Field(() => Int, {nullable:true})
+    take?: number;
+    @Field(() => Int, {nullable:true})
+    skip?: number;
+    @Field(() => LabelCountAggregateInput, {nullable:true})
+    _count?: InstanceType<typeof LabelCountAggregateInput>;
+    @Field(() => LabelMinAggregateInput, {nullable:true})
+    _min?: InstanceType<typeof LabelMinAggregateInput>;
+    @Field(() => LabelMaxAggregateInput, {nullable:true})
+    _max?: InstanceType<typeof LabelMaxAggregateInput>;
+}
+
+@InputType()
+export class LabelCountAggregateInput {
+    @Field(() => Boolean, {nullable:true})
+    id?: true;
+    @Field(() => Boolean, {nullable:true})
+    name?: true;
+    @Field(() => Boolean, {nullable:true})
+    _all?: true;
+}
+
+@ObjectType()
+export class LabelCountAggregate {
+    @Field(() => Int, {nullable:false})
+    id!: number;
+    @Field(() => Int, {nullable:false})
+    name!: number;
+    @Field(() => Int, {nullable:false})
+    _all!: number;
+}
+
+@InputType()
+export class LabelCountOrderByAggregateInput {
+    @Field(() => SortOrder, {nullable:true})
+    id?: keyof typeof SortOrder;
+    @Field(() => SortOrder, {nullable:true})
+    name?: keyof typeof SortOrder;
+}
+
+@ObjectType()
+export class LabelCount {
+    @Field(() => Int, {nullable:false})
+    Post?: number;
+}
+
+@InputType()
+export class LabelCreateManyInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
+}
+
+@InputType()
+export class LabelCreateNestedManyWithoutPostInput {
+    @Field(() => [LabelCreateWithoutPostInput], {nullable:true})
+    @Type(() => LabelCreateWithoutPostInput)
+    create?: Array<LabelCreateWithoutPostInput>;
+    @Field(() => [LabelCreateOrConnectWithoutPostInput], {nullable:true})
+    @Type(() => LabelCreateOrConnectWithoutPostInput)
+    connectOrCreate?: Array<LabelCreateOrConnectWithoutPostInput>;
+    @Field(() => [LabelWhereUniqueInput], {nullable:true})
+    @Type(() => LabelWhereUniqueInput)
+    connect?: Array<LabelWhereUniqueInput>;
+}
+
+@InputType()
+export class LabelCreateOrConnectWithoutPostInput {
+    @Field(() => LabelWhereUniqueInput, {nullable:false})
+    @Type(() => LabelWhereUniqueInput)
+    where!: InstanceType<typeof LabelWhereUniqueInput>;
+    @Field(() => LabelCreateWithoutPostInput, {nullable:false})
+    @Type(() => LabelCreateWithoutPostInput)
+    create!: InstanceType<typeof LabelCreateWithoutPostInput>;
+}
+
+@InputType()
+export class LabelCreateWithoutPostInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
+}
+
+@InputType()
+export class LabelCreateInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
+    @Field(() => PostCreateNestedManyWithoutLabelInput, {nullable:true})
+    Post?: InstanceType<typeof PostCreateNestedManyWithoutLabelInput>;
+}
+
+@ArgsType()
+export class LabelGroupByArgs {
+    @Field(() => LabelWhereInput, {nullable:true})
+    @Type(() => LabelWhereInput)
+    @ValidateNested()
+    where?: InstanceType<typeof LabelWhereInput>;
+    @Field(() => [LabelOrderByWithAggregationInput], {nullable:true})
+    orderBy?: Array<LabelOrderByWithAggregationInput>;
+    @Field(() => [LabelScalarFieldEnum], {nullable:false})
+    by!: Array<keyof typeof LabelScalarFieldEnum>;
+    @Field(() => LabelScalarWhereWithAggregatesInput, {nullable:true})
+    having?: InstanceType<typeof LabelScalarWhereWithAggregatesInput>;
+    @Field(() => Int, {nullable:true})
+    take?: number;
+    @Field(() => Int, {nullable:true})
+    skip?: number;
+    @Field(() => LabelCountAggregateInput, {nullable:true})
+    _count?: InstanceType<typeof LabelCountAggregateInput>;
+    @Field(() => LabelMinAggregateInput, {nullable:true})
+    _min?: InstanceType<typeof LabelMinAggregateInput>;
+    @Field(() => LabelMaxAggregateInput, {nullable:true})
+    _max?: InstanceType<typeof LabelMaxAggregateInput>;
+}
+
+@ObjectType()
+export class LabelGroupBy {
+    @Field(() => String, {nullable:false})
+    id!: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
+    @Field(() => LabelCountAggregate, {nullable:true})
+    _count?: InstanceType<typeof LabelCountAggregate>;
+    @Field(() => LabelMinAggregate, {nullable:true})
+    _min?: InstanceType<typeof LabelMinAggregate>;
+    @Field(() => LabelMaxAggregate, {nullable:true})
+    _max?: InstanceType<typeof LabelMaxAggregate>;
+}
+
+@InputType()
+export class LabelListRelationFilter {
+    @Field(() => LabelWhereInput, {nullable:true})
+    every?: InstanceType<typeof LabelWhereInput>;
+    @Field(() => LabelWhereInput, {nullable:true})
+    some?: InstanceType<typeof LabelWhereInput>;
+    @Field(() => LabelWhereInput, {nullable:true})
+    none?: InstanceType<typeof LabelWhereInput>;
+}
+
+@InputType()
+export class LabelMaxAggregateInput {
+    @Field(() => Boolean, {nullable:true})
+    id?: true;
+    @Field(() => Boolean, {nullable:true})
+    name?: true;
+}
+
+@ObjectType()
+export class LabelMaxAggregate {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    name?: string;
+}
+
+@InputType()
+export class LabelMaxOrderByAggregateInput {
+    @Field(() => SortOrder, {nullable:true})
+    id?: keyof typeof SortOrder;
+    @Field(() => SortOrder, {nullable:true})
+    name?: keyof typeof SortOrder;
+}
+
+@InputType()
+export class LabelMinAggregateInput {
+    @Field(() => Boolean, {nullable:true})
+    id?: true;
+    @Field(() => Boolean, {nullable:true})
+    name?: true;
+}
+
+@ObjectType()
+export class LabelMinAggregate {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    name?: string;
+}
+
+@InputType()
+export class LabelMinOrderByAggregateInput {
+    @Field(() => SortOrder, {nullable:true})
+    id?: keyof typeof SortOrder;
+    @Field(() => SortOrder, {nullable:true})
+    name?: keyof typeof SortOrder;
+}
+
+@InputType()
+export class LabelOrderByRelationAggregateInput {
+    @Field(() => SortOrder, {nullable:true})
+    _count?: keyof typeof SortOrder;
+}
+
+@InputType()
+export class LabelOrderByWithAggregationInput {
+    @Field(() => SortOrder, {nullable:true})
+    id?: keyof typeof SortOrder;
+    @Field(() => SortOrder, {nullable:true})
+    name?: keyof typeof SortOrder;
+    @Field(() => LabelCountOrderByAggregateInput, {nullable:true})
+    _count?: InstanceType<typeof LabelCountOrderByAggregateInput>;
+    @Field(() => LabelMaxOrderByAggregateInput, {nullable:true})
+    _max?: InstanceType<typeof LabelMaxOrderByAggregateInput>;
+    @Field(() => LabelMinOrderByAggregateInput, {nullable:true})
+    _min?: InstanceType<typeof LabelMinOrderByAggregateInput>;
+}
+
+@InputType()
+export class LabelOrderByWithRelationInput {
+    @Field(() => SortOrder, {nullable:true})
+    id?: keyof typeof SortOrder;
+    @Field(() => SortOrder, {nullable:true})
+    name?: keyof typeof SortOrder;
+    @Field(() => PostOrderByRelationAggregateInput, {nullable:true})
+    Post?: InstanceType<typeof PostOrderByRelationAggregateInput>;
+}
+
+@InputType()
+export class LabelScalarWhereWithAggregatesInput {
+    @Field(() => [LabelScalarWhereWithAggregatesInput], {nullable:true})
+    AND?: Array<LabelScalarWhereWithAggregatesInput>;
+    @Field(() => [LabelScalarWhereWithAggregatesInput], {nullable:true})
+    OR?: Array<LabelScalarWhereWithAggregatesInput>;
+    @Field(() => [LabelScalarWhereWithAggregatesInput], {nullable:true})
+    NOT?: Array<LabelScalarWhereWithAggregatesInput>;
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    id?: InstanceType<typeof StringWithAggregatesFilter>;
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    name?: InstanceType<typeof StringWithAggregatesFilter>;
+}
+
+@InputType()
+export class LabelScalarWhereInput {
+    @Field(() => [LabelScalarWhereInput], {nullable:true})
+    AND?: Array<LabelScalarWhereInput>;
+    @Field(() => [LabelScalarWhereInput], {nullable:true})
+    OR?: Array<LabelScalarWhereInput>;
+    @Field(() => [LabelScalarWhereInput], {nullable:true})
+    NOT?: Array<LabelScalarWhereInput>;
+    @Field(() => StringFilter, {nullable:true})
+    id?: InstanceType<typeof StringFilter>;
+    @Field(() => StringFilter, {nullable:true})
+    name?: InstanceType<typeof StringFilter>;
+}
+
+@InputType()
+export class LabelUncheckedCreateNestedManyWithoutPostInput {
+    @Field(() => [LabelCreateWithoutPostInput], {nullable:true})
+    @Type(() => LabelCreateWithoutPostInput)
+    create?: Array<LabelCreateWithoutPostInput>;
+    @Field(() => [LabelCreateOrConnectWithoutPostInput], {nullable:true})
+    @Type(() => LabelCreateOrConnectWithoutPostInput)
+    connectOrCreate?: Array<LabelCreateOrConnectWithoutPostInput>;
+    @Field(() => [LabelWhereUniqueInput], {nullable:true})
+    @Type(() => LabelWhereUniqueInput)
+    connect?: Array<LabelWhereUniqueInput>;
+}
+
+@InputType()
+export class LabelUncheckedCreateWithoutPostInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
+}
+
+@InputType()
+export class LabelUncheckedCreateInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
+    @Field(() => PostUncheckedCreateNestedManyWithoutLabelInput, {nullable:true})
+    Post?: InstanceType<typeof PostUncheckedCreateNestedManyWithoutLabelInput>;
+}
+
+@InputType()
+export class LabelUncheckedUpdateManyWithoutLabelInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    name?: string;
+}
+
+@InputType()
+export class LabelUncheckedUpdateManyWithoutPostNestedInput {
+    @Field(() => [LabelCreateWithoutPostInput], {nullable:true})
+    @Type(() => LabelCreateWithoutPostInput)
+    create?: Array<LabelCreateWithoutPostInput>;
+    @Field(() => [LabelCreateOrConnectWithoutPostInput], {nullable:true})
+    @Type(() => LabelCreateOrConnectWithoutPostInput)
+    connectOrCreate?: Array<LabelCreateOrConnectWithoutPostInput>;
+    @Field(() => [LabelUpsertWithWhereUniqueWithoutPostInput], {nullable:true})
+    @Type(() => LabelUpsertWithWhereUniqueWithoutPostInput)
+    upsert?: Array<LabelUpsertWithWhereUniqueWithoutPostInput>;
+    @Field(() => [LabelWhereUniqueInput], {nullable:true})
+    @Type(() => LabelWhereUniqueInput)
+    set?: Array<LabelWhereUniqueInput>;
+    @Field(() => [LabelWhereUniqueInput], {nullable:true})
+    @Type(() => LabelWhereUniqueInput)
+    disconnect?: Array<LabelWhereUniqueInput>;
+    @Field(() => [LabelWhereUniqueInput], {nullable:true})
+    @Type(() => LabelWhereUniqueInput)
+    delete?: Array<LabelWhereUniqueInput>;
+    @Field(() => [LabelWhereUniqueInput], {nullable:true})
+    @Type(() => LabelWhereUniqueInput)
+    connect?: Array<LabelWhereUniqueInput>;
+    @Field(() => [LabelUpdateWithWhereUniqueWithoutPostInput], {nullable:true})
+    @Type(() => LabelUpdateWithWhereUniqueWithoutPostInput)
+    update?: Array<LabelUpdateWithWhereUniqueWithoutPostInput>;
+    @Field(() => [LabelUpdateManyWithWhereWithoutPostInput], {nullable:true})
+    @Type(() => LabelUpdateManyWithWhereWithoutPostInput)
+    updateMany?: Array<LabelUpdateManyWithWhereWithoutPostInput>;
+    @Field(() => [LabelScalarWhereInput], {nullable:true})
+    @Type(() => LabelScalarWhereInput)
+    deleteMany?: Array<LabelScalarWhereInput>;
+}
+
+@InputType()
+export class LabelUncheckedUpdateManyInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    name?: string;
+}
+
+@InputType()
+export class LabelUncheckedUpdateWithoutPostInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    name?: string;
+}
+
+@InputType()
+export class LabelUncheckedUpdateInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    name?: string;
+    @Field(() => PostUncheckedUpdateManyWithoutLabelNestedInput, {nullable:true})
+    Post?: InstanceType<typeof PostUncheckedUpdateManyWithoutLabelNestedInput>;
+}
+
+@InputType()
+export class LabelUpdateManyMutationInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    name?: string;
+}
+
+@InputType()
+export class LabelUpdateManyWithWhereWithoutPostInput {
+    @Field(() => LabelScalarWhereInput, {nullable:false})
+    @Type(() => LabelScalarWhereInput)
+    where!: InstanceType<typeof LabelScalarWhereInput>;
+    @Field(() => LabelUpdateManyMutationInput, {nullable:false})
+    @Type(() => LabelUpdateManyMutationInput)
+    data!: InstanceType<typeof LabelUpdateManyMutationInput>;
+}
+
+@InputType()
+export class LabelUpdateManyWithoutPostNestedInput {
+    @Field(() => [LabelCreateWithoutPostInput], {nullable:true})
+    @Type(() => LabelCreateWithoutPostInput)
+    create?: Array<LabelCreateWithoutPostInput>;
+    @Field(() => [LabelCreateOrConnectWithoutPostInput], {nullable:true})
+    @Type(() => LabelCreateOrConnectWithoutPostInput)
+    connectOrCreate?: Array<LabelCreateOrConnectWithoutPostInput>;
+    @Field(() => [LabelUpsertWithWhereUniqueWithoutPostInput], {nullable:true})
+    @Type(() => LabelUpsertWithWhereUniqueWithoutPostInput)
+    upsert?: Array<LabelUpsertWithWhereUniqueWithoutPostInput>;
+    @Field(() => [LabelWhereUniqueInput], {nullable:true})
+    @Type(() => LabelWhereUniqueInput)
+    set?: Array<LabelWhereUniqueInput>;
+    @Field(() => [LabelWhereUniqueInput], {nullable:true})
+    @Type(() => LabelWhereUniqueInput)
+    disconnect?: Array<LabelWhereUniqueInput>;
+    @Field(() => [LabelWhereUniqueInput], {nullable:true})
+    @Type(() => LabelWhereUniqueInput)
+    delete?: Array<LabelWhereUniqueInput>;
+    @Field(() => [LabelWhereUniqueInput], {nullable:true})
+    @Type(() => LabelWhereUniqueInput)
+    connect?: Array<LabelWhereUniqueInput>;
+    @Field(() => [LabelUpdateWithWhereUniqueWithoutPostInput], {nullable:true})
+    @Type(() => LabelUpdateWithWhereUniqueWithoutPostInput)
+    update?: Array<LabelUpdateWithWhereUniqueWithoutPostInput>;
+    @Field(() => [LabelUpdateManyWithWhereWithoutPostInput], {nullable:true})
+    @Type(() => LabelUpdateManyWithWhereWithoutPostInput)
+    updateMany?: Array<LabelUpdateManyWithWhereWithoutPostInput>;
+    @Field(() => [LabelScalarWhereInput], {nullable:true})
+    @Type(() => LabelScalarWhereInput)
+    deleteMany?: Array<LabelScalarWhereInput>;
+}
+
+@InputType()
+export class LabelUpdateWithWhereUniqueWithoutPostInput {
+    @Field(() => LabelWhereUniqueInput, {nullable:false})
+    @Type(() => LabelWhereUniqueInput)
+    where!: InstanceType<typeof LabelWhereUniqueInput>;
+    @Field(() => LabelUpdateWithoutPostInput, {nullable:false})
+    @Type(() => LabelUpdateWithoutPostInput)
+    data!: InstanceType<typeof LabelUpdateWithoutPostInput>;
+}
+
+@InputType()
+export class LabelUpdateWithoutPostInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    name?: string;
+}
+
+@InputType()
+export class LabelUpdateInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    name?: string;
+    @Field(() => PostUpdateManyWithoutLabelNestedInput, {nullable:true})
+    Post?: InstanceType<typeof PostUpdateManyWithoutLabelNestedInput>;
+}
+
+@InputType()
+export class LabelUpsertWithWhereUniqueWithoutPostInput {
+    @Field(() => LabelWhereUniqueInput, {nullable:false})
+    @Type(() => LabelWhereUniqueInput)
+    where!: InstanceType<typeof LabelWhereUniqueInput>;
+    @Field(() => LabelUpdateWithoutPostInput, {nullable:false})
+    @Type(() => LabelUpdateWithoutPostInput)
+    update!: InstanceType<typeof LabelUpdateWithoutPostInput>;
+    @Field(() => LabelCreateWithoutPostInput, {nullable:false})
+    @Type(() => LabelCreateWithoutPostInput)
+    create!: InstanceType<typeof LabelCreateWithoutPostInput>;
+}
+
+@InputType()
+export class LabelWhereUniqueInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+}
+
+@InputType()
+export class LabelWhereInput {
+    @Field(() => [LabelWhereInput], {nullable:true})
+    AND?: Array<LabelWhereInput>;
+    @Field(() => [LabelWhereInput], {nullable:true})
+    OR?: Array<LabelWhereInput>;
+    @Field(() => [LabelWhereInput], {nullable:true})
+    NOT?: Array<LabelWhereInput>;
+    @Field(() => StringFilter, {nullable:true})
+    id?: InstanceType<typeof StringFilter>;
+    @Field(() => StringFilter, {nullable:true})
+    name?: InstanceType<typeof StringFilter>;
+    @Field(() => PostListRelationFilter, {nullable:true})
+    Post?: InstanceType<typeof PostListRelationFilter>;
+}
+
+@ObjectType()
+export class Label {
+    @Field(() => ID, {nullable:false})
+    id!: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
+    @Field(() => [Post], {nullable:true})
+    Post?: Array<Post>;
+    @Field(() => LabelCount, {nullable:false})
+    _count?: InstanceType<typeof LabelCount>;
+}
+
+@ArgsType()
+export class UpdateManyLabelArgs {
+    @Field(() => LabelUpdateManyMutationInput, {nullable:false})
+    @Type(() => LabelUpdateManyMutationInput)
+    @ValidateNested()
+    data!: InstanceType<typeof LabelUpdateManyMutationInput>;
+    @Field(() => LabelWhereInput, {nullable:true})
+    @Type(() => LabelWhereInput)
+    @ValidateNested()
+    where?: InstanceType<typeof LabelWhereInput>;
+}
+
+@ArgsType()
+export class UpdateOneLabelArgs {
+    @Field(() => LabelUpdateInput, {nullable:false})
+    @Type(() => LabelUpdateInput)
+    @ValidateNested()
+    data!: InstanceType<typeof LabelUpdateInput>;
+    @Field(() => LabelWhereUniqueInput, {nullable:false})
+    @Type(() => LabelWhereUniqueInput)
+    @ValidateNested()
+    where!: InstanceType<typeof LabelWhereUniqueInput>;
+}
+
+@ArgsType()
+export class UpsertOneLabelArgs {
+    @Field(() => LabelWhereUniqueInput, {nullable:false})
+    @Type(() => LabelWhereUniqueInput)
+    @ValidateNested()
+    where!: InstanceType<typeof LabelWhereUniqueInput>;
+    @Field(() => LabelCreateInput, {nullable:false})
+    @Type(() => LabelCreateInput)
+    create!: InstanceType<typeof LabelCreateInput>;
+    @Field(() => LabelUpdateInput, {nullable:false})
+    @Type(() => LabelUpdateInput)
+    update!: InstanceType<typeof LabelUpdateInput>;
+}
 
 @ObjectType()
 export class AggregatePost {
@@ -222,6 +865,12 @@ export class PostCountOrderByAggregateInput {
     authorId?: keyof typeof SortOrder;
 }
 
+@ObjectType()
+export class PostCount {
+    @Field(() => Int, {nullable:false})
+    Label?: number;
+}
+
 @InputType()
 export class PostCreateManyAuthorInputEnvelope {
     @Field(() => [PostCreateManyAuthorInput], {nullable:false})
@@ -270,6 +919,19 @@ export class PostCreateNestedManyWithoutAuthorInput {
 }
 
 @InputType()
+export class PostCreateNestedManyWithoutLabelInput {
+    @Field(() => [PostCreateWithoutLabelInput], {nullable:true})
+    @Type(() => PostCreateWithoutLabelInput)
+    create?: Array<PostCreateWithoutLabelInput>;
+    @Field(() => [PostCreateOrConnectWithoutLabelInput], {nullable:true})
+    @Type(() => PostCreateOrConnectWithoutLabelInput)
+    connectOrCreate?: Array<PostCreateOrConnectWithoutLabelInput>;
+    @Field(() => [PostWhereUniqueInput], {nullable:true})
+    @Type(() => PostWhereUniqueInput)
+    connect?: Array<PostWhereUniqueInput>;
+}
+
+@InputType()
 export class PostCreateOrConnectWithoutAuthorInput {
     @Field(() => PostWhereUniqueInput, {nullable:false})
     @Type(() => PostWhereUniqueInput)
@@ -280,6 +942,16 @@ export class PostCreateOrConnectWithoutAuthorInput {
 }
 
 @InputType()
+export class PostCreateOrConnectWithoutLabelInput {
+    @Field(() => PostWhereUniqueInput, {nullable:false})
+    @Type(() => PostWhereUniqueInput)
+    where!: InstanceType<typeof PostWhereUniqueInput>;
+    @Field(() => PostCreateWithoutLabelInput, {nullable:false})
+    @Type(() => PostCreateWithoutLabelInput)
+    create!: InstanceType<typeof PostCreateWithoutLabelInput>;
+}
+
+@InputType()
 export class PostCreateWithoutAuthorInput {
     @Field(() => String, {nullable:true})
     id?: string;
@@ -287,6 +959,20 @@ export class PostCreateWithoutAuthorInput {
     title!: string;
     @Field(() => String, {nullable:false})
     description!: string;
+    @Field(() => LabelCreateNestedManyWithoutPostInput, {nullable:true})
+    Label?: InstanceType<typeof LabelCreateNestedManyWithoutPostInput>;
+}
+
+@InputType()
+export class PostCreateWithoutLabelInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:false})
+    title!: string;
+    @Field(() => String, {nullable:false})
+    description!: string;
+    @Field(() => UserCreateNestedOneWithoutPostsInput, {nullable:false})
+    author!: InstanceType<typeof UserCreateNestedOneWithoutPostsInput>;
 }
 
 @InputType()
@@ -299,6 +985,8 @@ export class PostCreateInput {
     description!: string;
     @Field(() => UserCreateNestedOneWithoutPostsInput, {nullable:false})
     author!: InstanceType<typeof UserCreateNestedOneWithoutPostsInput>;
+    @Field(() => LabelCreateNestedManyWithoutPostInput, {nullable:true})
+    Label?: InstanceType<typeof LabelCreateNestedManyWithoutPostInput>;
 }
 
 @ArgsType()
@@ -461,6 +1149,8 @@ export class PostOrderByWithRelationInput {
     authorId?: keyof typeof SortOrder;
     @Field(() => UserOrderByWithRelationInput, {nullable:true})
     author?: InstanceType<typeof UserOrderByWithRelationInput>;
+    @Field(() => LabelOrderByRelationAggregateInput, {nullable:true})
+    Label?: InstanceType<typeof LabelOrderByRelationAggregateInput>;
 }
 
 @InputType()
@@ -516,6 +1206,19 @@ export class PostUncheckedCreateNestedManyWithoutAuthorInput {
 }
 
 @InputType()
+export class PostUncheckedCreateNestedManyWithoutLabelInput {
+    @Field(() => [PostCreateWithoutLabelInput], {nullable:true})
+    @Type(() => PostCreateWithoutLabelInput)
+    create?: Array<PostCreateWithoutLabelInput>;
+    @Field(() => [PostCreateOrConnectWithoutLabelInput], {nullable:true})
+    @Type(() => PostCreateOrConnectWithoutLabelInput)
+    connectOrCreate?: Array<PostCreateOrConnectWithoutLabelInput>;
+    @Field(() => [PostWhereUniqueInput], {nullable:true})
+    @Type(() => PostWhereUniqueInput)
+    connect?: Array<PostWhereUniqueInput>;
+}
+
+@InputType()
 export class PostUncheckedCreateWithoutAuthorInput {
     @Field(() => String, {nullable:true})
     id?: string;
@@ -523,6 +1226,20 @@ export class PostUncheckedCreateWithoutAuthorInput {
     title!: string;
     @Field(() => String, {nullable:false})
     description!: string;
+    @Field(() => LabelUncheckedCreateNestedManyWithoutPostInput, {nullable:true})
+    Label?: InstanceType<typeof LabelUncheckedCreateNestedManyWithoutPostInput>;
+}
+
+@InputType()
+export class PostUncheckedCreateWithoutLabelInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:false})
+    title!: string;
+    @Field(() => String, {nullable:false})
+    description!: string;
+    @Field(() => String, {nullable:false})
+    authorId!: string;
 }
 
 @InputType()
@@ -535,6 +1252,8 @@ export class PostUncheckedCreateInput {
     description!: string;
     @Field(() => String, {nullable:false})
     authorId!: string;
+    @Field(() => LabelUncheckedCreateNestedManyWithoutPostInput, {nullable:true})
+    Label?: InstanceType<typeof LabelUncheckedCreateNestedManyWithoutPostInput>;
 }
 
 @InputType()
@@ -575,6 +1294,52 @@ export class PostUncheckedUpdateManyWithoutAuthorNestedInput {
 }
 
 @InputType()
+export class PostUncheckedUpdateManyWithoutLabelNestedInput {
+    @Field(() => [PostCreateWithoutLabelInput], {nullable:true})
+    @Type(() => PostCreateWithoutLabelInput)
+    create?: Array<PostCreateWithoutLabelInput>;
+    @Field(() => [PostCreateOrConnectWithoutLabelInput], {nullable:true})
+    @Type(() => PostCreateOrConnectWithoutLabelInput)
+    connectOrCreate?: Array<PostCreateOrConnectWithoutLabelInput>;
+    @Field(() => [PostUpsertWithWhereUniqueWithoutLabelInput], {nullable:true})
+    @Type(() => PostUpsertWithWhereUniqueWithoutLabelInput)
+    upsert?: Array<PostUpsertWithWhereUniqueWithoutLabelInput>;
+    @Field(() => [PostWhereUniqueInput], {nullable:true})
+    @Type(() => PostWhereUniqueInput)
+    set?: Array<PostWhereUniqueInput>;
+    @Field(() => [PostWhereUniqueInput], {nullable:true})
+    @Type(() => PostWhereUniqueInput)
+    disconnect?: Array<PostWhereUniqueInput>;
+    @Field(() => [PostWhereUniqueInput], {nullable:true})
+    @Type(() => PostWhereUniqueInput)
+    delete?: Array<PostWhereUniqueInput>;
+    @Field(() => [PostWhereUniqueInput], {nullable:true})
+    @Type(() => PostWhereUniqueInput)
+    connect?: Array<PostWhereUniqueInput>;
+    @Field(() => [PostUpdateWithWhereUniqueWithoutLabelInput], {nullable:true})
+    @Type(() => PostUpdateWithWhereUniqueWithoutLabelInput)
+    update?: Array<PostUpdateWithWhereUniqueWithoutLabelInput>;
+    @Field(() => [PostUpdateManyWithWhereWithoutLabelInput], {nullable:true})
+    @Type(() => PostUpdateManyWithWhereWithoutLabelInput)
+    updateMany?: Array<PostUpdateManyWithWhereWithoutLabelInput>;
+    @Field(() => [PostScalarWhereInput], {nullable:true})
+    @Type(() => PostScalarWhereInput)
+    deleteMany?: Array<PostScalarWhereInput>;
+}
+
+@InputType()
+export class PostUncheckedUpdateManyWithoutPostInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    title?: string;
+    @Field(() => String, {nullable:true})
+    description?: string;
+    @Field(() => String, {nullable:true})
+    authorId?: string;
+}
+
+@InputType()
 export class PostUncheckedUpdateManyWithoutPostsInput {
     @Field(() => String, {nullable:true})
     id?: string;
@@ -604,6 +1369,20 @@ export class PostUncheckedUpdateWithoutAuthorInput {
     title?: string;
     @Field(() => String, {nullable:true})
     description?: string;
+    @Field(() => LabelUncheckedUpdateManyWithoutPostNestedInput, {nullable:true})
+    Label?: InstanceType<typeof LabelUncheckedUpdateManyWithoutPostNestedInput>;
+}
+
+@InputType()
+export class PostUncheckedUpdateWithoutLabelInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    title?: string;
+    @Field(() => String, {nullable:true})
+    description?: string;
+    @Field(() => String, {nullable:true})
+    authorId?: string;
 }
 
 @InputType()
@@ -616,6 +1395,8 @@ export class PostUncheckedUpdateInput {
     description?: string;
     @Field(() => String, {nullable:true})
     authorId?: string;
+    @Field(() => LabelUncheckedUpdateManyWithoutPostNestedInput, {nullable:true})
+    Label?: InstanceType<typeof LabelUncheckedUpdateManyWithoutPostNestedInput>;
 }
 
 @InputType()
@@ -630,6 +1411,16 @@ export class PostUpdateManyMutationInput {
 
 @InputType()
 export class PostUpdateManyWithWhereWithoutAuthorInput {
+    @Field(() => PostScalarWhereInput, {nullable:false})
+    @Type(() => PostScalarWhereInput)
+    where!: InstanceType<typeof PostScalarWhereInput>;
+    @Field(() => PostUpdateManyMutationInput, {nullable:false})
+    @Type(() => PostUpdateManyMutationInput)
+    data!: InstanceType<typeof PostUpdateManyMutationInput>;
+}
+
+@InputType()
+export class PostUpdateManyWithWhereWithoutLabelInput {
     @Field(() => PostScalarWhereInput, {nullable:false})
     @Type(() => PostScalarWhereInput)
     where!: InstanceType<typeof PostScalarWhereInput>;
@@ -676,6 +1467,40 @@ export class PostUpdateManyWithoutAuthorNestedInput {
 }
 
 @InputType()
+export class PostUpdateManyWithoutLabelNestedInput {
+    @Field(() => [PostCreateWithoutLabelInput], {nullable:true})
+    @Type(() => PostCreateWithoutLabelInput)
+    create?: Array<PostCreateWithoutLabelInput>;
+    @Field(() => [PostCreateOrConnectWithoutLabelInput], {nullable:true})
+    @Type(() => PostCreateOrConnectWithoutLabelInput)
+    connectOrCreate?: Array<PostCreateOrConnectWithoutLabelInput>;
+    @Field(() => [PostUpsertWithWhereUniqueWithoutLabelInput], {nullable:true})
+    @Type(() => PostUpsertWithWhereUniqueWithoutLabelInput)
+    upsert?: Array<PostUpsertWithWhereUniqueWithoutLabelInput>;
+    @Field(() => [PostWhereUniqueInput], {nullable:true})
+    @Type(() => PostWhereUniqueInput)
+    set?: Array<PostWhereUniqueInput>;
+    @Field(() => [PostWhereUniqueInput], {nullable:true})
+    @Type(() => PostWhereUniqueInput)
+    disconnect?: Array<PostWhereUniqueInput>;
+    @Field(() => [PostWhereUniqueInput], {nullable:true})
+    @Type(() => PostWhereUniqueInput)
+    delete?: Array<PostWhereUniqueInput>;
+    @Field(() => [PostWhereUniqueInput], {nullable:true})
+    @Type(() => PostWhereUniqueInput)
+    connect?: Array<PostWhereUniqueInput>;
+    @Field(() => [PostUpdateWithWhereUniqueWithoutLabelInput], {nullable:true})
+    @Type(() => PostUpdateWithWhereUniqueWithoutLabelInput)
+    update?: Array<PostUpdateWithWhereUniqueWithoutLabelInput>;
+    @Field(() => [PostUpdateManyWithWhereWithoutLabelInput], {nullable:true})
+    @Type(() => PostUpdateManyWithWhereWithoutLabelInput)
+    updateMany?: Array<PostUpdateManyWithWhereWithoutLabelInput>;
+    @Field(() => [PostScalarWhereInput], {nullable:true})
+    @Type(() => PostScalarWhereInput)
+    deleteMany?: Array<PostScalarWhereInput>;
+}
+
+@InputType()
 export class PostUpdateWithWhereUniqueWithoutAuthorInput {
     @Field(() => PostWhereUniqueInput, {nullable:false})
     @Type(() => PostWhereUniqueInput)
@@ -686,6 +1511,16 @@ export class PostUpdateWithWhereUniqueWithoutAuthorInput {
 }
 
 @InputType()
+export class PostUpdateWithWhereUniqueWithoutLabelInput {
+    @Field(() => PostWhereUniqueInput, {nullable:false})
+    @Type(() => PostWhereUniqueInput)
+    where!: InstanceType<typeof PostWhereUniqueInput>;
+    @Field(() => PostUpdateWithoutLabelInput, {nullable:false})
+    @Type(() => PostUpdateWithoutLabelInput)
+    data!: InstanceType<typeof PostUpdateWithoutLabelInput>;
+}
+
+@InputType()
 export class PostUpdateWithoutAuthorInput {
     @Field(() => String, {nullable:true})
     id?: string;
@@ -693,6 +1528,20 @@ export class PostUpdateWithoutAuthorInput {
     title?: string;
     @Field(() => String, {nullable:true})
     description?: string;
+    @Field(() => LabelUpdateManyWithoutPostNestedInput, {nullable:true})
+    Label?: InstanceType<typeof LabelUpdateManyWithoutPostNestedInput>;
+}
+
+@InputType()
+export class PostUpdateWithoutLabelInput {
+    @Field(() => String, {nullable:true})
+    id?: string;
+    @Field(() => String, {nullable:true})
+    title?: string;
+    @Field(() => String, {nullable:true})
+    description?: string;
+    @Field(() => UserUpdateOneRequiredWithoutPostsNestedInput, {nullable:true})
+    author?: InstanceType<typeof UserUpdateOneRequiredWithoutPostsNestedInput>;
 }
 
 @InputType()
@@ -705,6 +1554,8 @@ export class PostUpdateInput {
     description?: string;
     @Field(() => UserUpdateOneRequiredWithoutPostsNestedInput, {nullable:true})
     author?: InstanceType<typeof UserUpdateOneRequiredWithoutPostsNestedInput>;
+    @Field(() => LabelUpdateManyWithoutPostNestedInput, {nullable:true})
+    Label?: InstanceType<typeof LabelUpdateManyWithoutPostNestedInput>;
 }
 
 @InputType()
@@ -718,6 +1569,19 @@ export class PostUpsertWithWhereUniqueWithoutAuthorInput {
     @Field(() => PostCreateWithoutAuthorInput, {nullable:false})
     @Type(() => PostCreateWithoutAuthorInput)
     create!: InstanceType<typeof PostCreateWithoutAuthorInput>;
+}
+
+@InputType()
+export class PostUpsertWithWhereUniqueWithoutLabelInput {
+    @Field(() => PostWhereUniqueInput, {nullable:false})
+    @Type(() => PostWhereUniqueInput)
+    where!: InstanceType<typeof PostWhereUniqueInput>;
+    @Field(() => PostUpdateWithoutLabelInput, {nullable:false})
+    @Type(() => PostUpdateWithoutLabelInput)
+    update!: InstanceType<typeof PostUpdateWithoutLabelInput>;
+    @Field(() => PostCreateWithoutLabelInput, {nullable:false})
+    @Type(() => PostCreateWithoutLabelInput)
+    create!: InstanceType<typeof PostCreateWithoutLabelInput>;
 }
 
 @InputType()
@@ -744,6 +1608,8 @@ export class PostWhereInput {
     authorId?: InstanceType<typeof StringFilter>;
     @Field(() => UserRelationFilter, {nullable:true})
     author?: InstanceType<typeof UserRelationFilter>;
+    @Field(() => LabelListRelationFilter, {nullable:true})
+    Label?: InstanceType<typeof LabelListRelationFilter>;
 }
 
 @ObjectType()
@@ -758,6 +1624,10 @@ export class Post {
     authorId!: string;
     @Field(() => User, {nullable:false})
     author?: InstanceType<typeof User>;
+    @Field(() => [Label], {nullable:true})
+    Label?: Array<Label>;
+    @Field(() => PostCount, {nullable:false})
+    _count?: InstanceType<typeof PostCount>;
 }
 
 @ArgsType()

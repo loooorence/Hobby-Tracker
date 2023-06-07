@@ -43,9 +43,16 @@ model User {
 }
 
 model Post {
-  id          String @id @default(uuid())
+  id          String  @id @default(uuid())
   title       String
   description String
-  author      User   @relation(fields: [authorId], references: [id])
+  author      User    @relation(fields: [authorId], references: [id])
   authorId    String
+  Label       Label[]
+}
+
+model Label {
+  id   String @id @default(uuid())
+  name String
+  Post Post[]
 }

@@ -20,7 +20,6 @@ export class UserResolver {
     return this.userService.create(createOneUserArgs);
   }
 
-  @UseGuards(CheckAuthGuard)
   @Query(() => [User])
   users() {
     return this.userService.findAll();

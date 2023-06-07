@@ -17,6 +17,9 @@ const GET_POSTS = gql`
       title
       description
       authorId
+      author {
+        name
+      }
     }
   }
 `;
@@ -78,6 +81,14 @@ const CREATE_POST = gql`
         email
         name
       }
+    }
+  }
+`;
+
+const GET_USER = gql`
+  query GetUser($userInput: UserWhereUniqueInput!) {
+    user(where: $userInput) {
+      name
     }
   }
 `;

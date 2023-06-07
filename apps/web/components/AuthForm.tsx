@@ -43,7 +43,15 @@ export function AuthForm({ isLogin }: Props) {
     mutationKey: ['SignUp'],
     mutationFn: async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      return await gql.SignUp({ input: { email, password, name } });
+      const response = await gql.SignUp({ input: { email, password, name } });
+      if (
+        response.SignUp.user.email &&
+        response.SignUp.user.name &&
+        response.SignUp.user.id
+      ) {
+        dispatch({ type: 'SET_USER', payload: response.SignUp.user as User });
+        dispatch({ type: 'LOG_IN' });
+      }
     },
     onSuccess: () => {
       router.push('/');

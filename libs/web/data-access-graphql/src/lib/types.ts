@@ -12,6 +12,105 @@ export type Scalars = {
   Float: number;
 };
 
+export type Label = {
+  __typename?: 'Label';
+  Post?: Maybe<Array<Post>>;
+  _count: LabelCount;
+  id: Scalars['ID'];
+  name: Scalars['String'];
+};
+
+export type LabelCount = {
+  __typename?: 'LabelCount';
+  Post: Scalars['Int'];
+};
+
+export type LabelCountAggregate = {
+  __typename?: 'LabelCountAggregate';
+  _all: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['Int'];
+};
+
+export type LabelCreateNestedManyWithoutPostInput = {
+  connect?: InputMaybe<Array<LabelWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<LabelCreateOrConnectWithoutPostInput>>;
+  create?: InputMaybe<Array<LabelCreateWithoutPostInput>>;
+};
+
+export type LabelCreateOrConnectWithoutPostInput = {
+  create: LabelCreateWithoutPostInput;
+  where: LabelWhereUniqueInput;
+};
+
+export type LabelCreateWithoutPostInput = {
+  id?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+};
+
+export type LabelMaxAggregate = {
+  __typename?: 'LabelMaxAggregate';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type LabelMinAggregate = {
+  __typename?: 'LabelMinAggregate';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type LabelScalarWhereInput = {
+  AND?: InputMaybe<Array<LabelScalarWhereInput>>;
+  NOT?: InputMaybe<Array<LabelScalarWhereInput>>;
+  OR?: InputMaybe<Array<LabelScalarWhereInput>>;
+  id?: InputMaybe<StringFilter>;
+  name?: InputMaybe<StringFilter>;
+};
+
+export type LabelUpdateManyMutationInput = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type LabelUpdateManyWithWhereWithoutPostInput = {
+  data: LabelUpdateManyMutationInput;
+  where: LabelScalarWhereInput;
+};
+
+export type LabelUpdateManyWithoutPostNestedInput = {
+  connect?: InputMaybe<Array<LabelWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<LabelCreateOrConnectWithoutPostInput>>;
+  create?: InputMaybe<Array<LabelCreateWithoutPostInput>>;
+  delete?: InputMaybe<Array<LabelWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<LabelScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<LabelWhereUniqueInput>>;
+  set?: InputMaybe<Array<LabelWhereUniqueInput>>;
+  update?: InputMaybe<Array<LabelUpdateWithWhereUniqueWithoutPostInput>>;
+  updateMany?: InputMaybe<Array<LabelUpdateManyWithWhereWithoutPostInput>>;
+  upsert?: InputMaybe<Array<LabelUpsertWithWhereUniqueWithoutPostInput>>;
+};
+
+export type LabelUpdateWithWhereUniqueWithoutPostInput = {
+  data: LabelUpdateWithoutPostInput;
+  where: LabelWhereUniqueInput;
+};
+
+export type LabelUpdateWithoutPostInput = {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type LabelUpsertWithWhereUniqueWithoutPostInput = {
+  create: LabelCreateWithoutPostInput;
+  update: LabelUpdateWithoutPostInput;
+  where: LabelWhereUniqueInput;
+};
+
+export type LabelWhereUniqueInput = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
 export type LoginResponse = {
   __typename?: 'LoginResponse';
   access_token: Scalars['String'];
@@ -79,11 +178,18 @@ export type MutationUpdateUserArgs = {
 
 export type Post = {
   __typename?: 'Post';
+  Label?: Maybe<Array<Label>>;
+  _count: PostCount;
   author: User;
   authorId: Scalars['String'];
   description: Scalars['String'];
   id: Scalars['ID'];
   title: Scalars['String'];
+};
+
+export type PostCount = {
+  __typename?: 'PostCount';
+  Label: Scalars['Int'];
 };
 
 export type PostCountAggregate = {
@@ -96,6 +202,7 @@ export type PostCountAggregate = {
 };
 
 export type PostCreateInput = {
+  Label?: InputMaybe<LabelCreateNestedManyWithoutPostInput>;
   author: UserCreateNestedOneWithoutPostsInput;
   description: Scalars['String'];
   id?: InputMaybe<Scalars['String']>;
@@ -126,6 +233,7 @@ export type PostCreateOrConnectWithoutAuthorInput = {
 };
 
 export type PostCreateWithoutAuthorInput = {
+  Label?: InputMaybe<LabelCreateNestedManyWithoutPostInput>;
   description: Scalars['String'];
   id?: InputMaybe<Scalars['String']>;
   title: Scalars['String'];
@@ -158,6 +266,7 @@ export type PostScalarWhereInput = {
 };
 
 export type PostUpdateInput = {
+  Label?: InputMaybe<LabelUpdateManyWithoutPostNestedInput>;
   author?: InputMaybe<UserUpdateOneRequiredWithoutPostsNestedInput>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
@@ -195,6 +304,7 @@ export type PostUpdateWithWhereUniqueWithoutAuthorInput = {
 };
 
 export type PostUpdateWithoutAuthorInput = {
+  Label?: InputMaybe<LabelUpdateManyWithoutPostNestedInput>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
