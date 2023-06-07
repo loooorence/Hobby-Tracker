@@ -3,6 +3,7 @@ import styles from './InstanceWindow.module.css';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { gql } from '../data-access/graphql-client';
 import { useRouter } from 'next/router';
+import { useAuth } from '../context/Auth.context';
 
 function InstanceWindow() {
   // State variables, setting to empty, null or false
@@ -17,6 +18,8 @@ function InstanceWindow() {
 
   // Router used to go to different pages when needed
   const router = useRouter();
+
+  const { user } = useAuth();
 
   // Query to load posts from database
   const {
@@ -34,7 +37,7 @@ function InstanceWindow() {
       await gql.CreatePost({
         title: data.title,
         description: data.description,
-        authorId: 'be0463e3-b911-4b12-9907-1a373ad98e92',
+        authorId: user.id,
       });
 
       // To catch any errors when creating a post
