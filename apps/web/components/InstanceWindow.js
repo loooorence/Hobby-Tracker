@@ -34,7 +34,7 @@ function InstanceWindow() {
       await gql.CreatePost({
         title: data.title,
         description: data.description,
-        authorId: 'be0463e3-b911-4b12-9907-1a373ad98e92',
+        authorId: '11f84349-ae5c-4ab4-88bc-eeea8cb15717',
       });
 
       // To catch any errors when creating a post
