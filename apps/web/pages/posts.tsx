@@ -1,53 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { gql } from '../data-access/graphql-client';
 import { useQuery } from '@tanstack/react-query';
+import SearchBar from '../components/SearchBar';
 
-const Users = () => {
-  const {
-    isLoading: isLoadingUsers,
-    error: errorUsers,
-    data: dataUsers,
-  } = useQuery({
-    queryKey: ['Users'],
-    queryFn: () => gql.GetUsers(),
-  });
+const Posts = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchStatus, setSearchStatus] = useState('');
 
   const {
     isLoading: isLoadingPosts,
     error: errorPosts,
     data: dataPosts,
   } = useQuery({
-    queryKey: ['Posts}'],
+    queryKey: ['Posts'],
     queryFn: () => gql.GetPosts(),
   });
 
-  // console.log(dataPosts);
-  // console.log(dataUsers);
+  const handleSearch = (term) => {
+    // Perform the search here
+    const results = dataPosts.posts.filter(post =>
+      post.description.toLowerCase().includes(term.toLowerCase())
+    );
 
-  const users = dataUsers?.users.map((user) => (
-    <div key={user.id}>
-      <div>{user.name}</div>
-      <div>{user.email}</div>
-    </div>
-  ));
+    setSearchTerm(term);
 
-  const posts = dataPosts?.posts.map((post) => (
-    <div key={post.id}>
-      <div>{post.title}</div>
-      <div>{post.description}</div>
-      <div>{post.authorId}</div>
-    </div>
-  ));
+    if (results.length > 0) {
+      setSearchStatus(`Search for "${term}" was successful.`);
+      return true;
+    } else {
+      setSearchStatus(`Search for "${term}" found no matches.`);
+      return false;
+    }
+  };
 
-  if (isLoadingUsers || isLoadingPosts) return <div>Loading</div>;
+  useEffect(() => {
+    console.log(searchStatus);
+  }, [searchStatus]);
 
-  if (errorUsers || errorPosts) return <div>Error</div>;
+  if (isLoadingPosts) return <div>Loading</div>;
+  if (errorPosts) return <div>Error</div>;
 
   return (
     <div>
-      <div>{users}</div>
-      <div>{posts}</div>
+      <SearchBar onSearch={handleSearch} />
+      {dataPosts.posts.map((post) => (
+        <div key={post.id}>
+          <div>{post.title}</div>
+          <div>{post.description}</div>
+          <div>{post.authorId}</div>
+        </div>
+      ))}
     </div>
   );
 };
-export default Users;
+
+export default Posts;
