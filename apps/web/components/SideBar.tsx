@@ -8,9 +8,28 @@ import mountainIcon from '@iconify/icons-noto/mountain';
 // npm install --save-dev @iconify/react @iconify/icons-noto
 import styles from './SideBar.module.css';
 import Link from 'next/link';
+import { useAuth, useAuthDispath } from '../context/Auth.context';
+import { Button } from '@mui/material';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 function Sidebar() {
-  return (
+  const { user, isLoggedIn } = useAuth();
+  const dispatch = useAuthDispath();
+  const router = useRouter();
+
+  const handleLogOut = () => {
+    dispatch({ type: 'LOG_OUT' });
+    router.push('/login');
+  };
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      router.push('/login');
+    }
+  }, [router, isLoggedIn]);
+
+  return isLoggedIn ? (
     <nav className={styles.Flex_row}>
       <Link href="/" className={styles.Head}>
         <Icon className={styles.Logo} icon={mountainIcon} width="55" />
@@ -31,12 +50,16 @@ function Sidebar() {
         <span className={styles.Span}>Post</span>
       </Link>
 
-      <Link href="/login" className={styles.Button}>
+      <Link href="/" className={styles.Button}>
         <Icon className={styles.Icon} icon={userLine} width="25" />
-        <span className={styles.Span}>Me</span>
+        <span className={styles.Span}>{user.name}</span>
       </Link>
+
+      <Button variant="contained" onClick={handleLogOut}>
+        Sign out
+      </Button>
     </nav>
-  );
+  ) : null;
 }
 
 export default Sidebar;

@@ -43,7 +43,8 @@ function InstanceWindow() {
 
       if (errorMessage.includes('Invalid `prisma.post.create()` invocation:')) {
         /* setErrorMessage('Please Login to Post Your Hobby'); */
-        routingURLRef.current = '/login';
+        // routingURLRef.current = '/login';
+        routingURLRef.current = '/';
       } else if (
         errorMessage.includes(
           'Cannot return null for non-nullable field Post.author.'
@@ -153,8 +154,6 @@ function InstanceWindow() {
     <div className={styles.Instance_backdrop}>
       {/* <h1 className={styles.Logo}>Post an Instance here!</h1> */}
       <div className={styles.Instance}>
-
-
         {selectedFile && (
           <img
             src={URL.createObjectURL(selectedFile)}
